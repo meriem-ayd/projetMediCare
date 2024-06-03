@@ -291,6 +291,43 @@
                     <!-- chat tab ends -->
                 </div>
             </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom du patient</th>
+                            <th>Prénom du patient</th>
+                            <th>Age</th>
+                            <th>Date</th>
+                            <th>État</th>
+                            <th>DCI</th>
+                            <th>Quantité demandée</th>
+                            <th>Posologie</th>
+                            <th>Durée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($ordonnances as $ordonnance)
+                        @foreach($ordonnance->lignes as $ligne)
+                        <tr>
+                            <td>{{ $ordonnance->id }}</td>
+                            <td>{{ $ordonnance->nom_patient }}</td>
+                            <td>{{ $ordonnance->prenom_patient }}</td>
+                            <td>{{ $ordonnance->age }}</td>
+                            <td>{{ $ordonnance->date }}</td>
+                            <td>{{ $ordonnance->etat }}</td>
+                            <td>{{ $ligne->nomCommercial->dci->dci }} - {{ $ligne->nomCommercial->dci->forme }} - {{ $ligne->nomCommercial->dci->dosage }}</td>
+                            <td>{{ $ligne->quantite_demandee }}</td>
+                            <td>{{ $ligne->posologie }}</td>
+                            <td>{{ $ligne->duree }}</td>
+                        </tr>
+                        @endforeach
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
             <!-- partial -->
             <!-- partial:../../partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -615,180 +652,26 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col">
-                            <input type="text" id="searchBonInput" class="form-control" placeholder="Rechercher par Numéro de Bon">
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Tableau des Bons de Commande</h4>
-                            <div class="row">
-                                <div class="col-12">
-                                    <table id="order-listing" class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Bon N°</th>
-                                                <th>Date</th>
-                                                <th>DCI/Forme/Dosage</th>
-                                                <th>Quantité Demandée</th>
-                                                <th>Quantité Restante</th>
-                                                <th>État</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($bonsDeCommande as $bonDeCommande)
-                                            <tr id="row{{ $bonDeCommande->id }}">
-                                                <td>{{ $bonDeCommande->num_bc }}</td>
-                                                <td>{{ $bonDeCommande->date }}</td>
-                                                <td>
-                                                    <ul class="no-bullets">
-                                                        @foreach($bonDeCommande->lignes as $ligne)
-                                                        <li>{{ $ligne->nomCommercial->dci->dci }} - {{ $ligne->nomCommercial->dci->forme }} - {{ $ligne->nomCommercial->dci->dosage }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <ul class="no-bullets">
-                                                        @foreach($bonDeCommande->lignes as $ligne)
-                                                        <li>{{ $ligne->quantite_demandee }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <ul class="no-bullets">
-                                                        @foreach($bonDeCommande->lignes as $ligne)
-                                                        <li>{{ $ligne->quantite_restante }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </td>
-                                                <td>{{ $bonDeCommande->etat }}</td>
-                                                <td>
-                                                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifierModal{{ $bonDeCommande->id }}" title="Modifier le Bon de Commande">Modifier</button>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            @foreach($bonsDeCommande as $bonDeCommande)
-                            <div class="modal fade" id="modifierModal{{ $bonDeCommande->id }}" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel{{ $bonDeCommande->id }}" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modifierModalLabel{{ $bonDeCommande->id }}">Modifier Bon de Commande</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="{{ route('updateBonDeCommande', $bonDeCommande->id) }}" method="POST" class="custom-form">
-                                                @csrf
-                                                @method('PUT')
-                                                <div class="form-group">
-                                                    <label for="num_bc">Bon N°</label>
-                                                    <input type="text" class="form-control" name="num_bc" value="{{ $bonDeCommande->num_bc }}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="date">Date</label>
-                                                    <input type="date" class="form-control" name="date" value="{{ $bonDeCommande->date }}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="etat">État</label>
-                                                    <input type="text" class="form-control" name="etat" value="{{ $bonDeCommande->etat }}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="lignes">DCI/Forme/Dosage</label>
-                                                    <ul class="no-bullets">
-                                                        @foreach($bonDeCommande->lignes as $ligne)
-                                                        <li>
-                                                            <input type="text" class="form-control mb-1" name="lignes[{{ $ligne->id }}][dci]" value="{{ $ligne->nomCommercial->dci->dci }}" required>
-                                                            <input type="text" class="form-control mb-1" name="lignes[{{ $ligne->id }}][forme]" value="{{ $ligne->nomCommercial->dci->forme }}" required>
-                                                            <input type="text" class="form-control mb-1" name="lignes[{{ $ligne->id }}][dosage]" value="{{ $ligne->nomCommercial->dci->dosage }}" required>
-                                                        </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="quantite_demandee">Quantité Demandée</label>
-                                                    <ul class="no-bullets">
-                                                        @foreach($bonDeCommande->lignes as $ligne)
-                                                        <li><input type="number" class="form-control mb-1" name="lignes[{{ $ligne->id }}][quantite_demandee]" value="{{ $ligne->quantite_demandee }}" required></li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="quantite_restante">Quantité Restante</label>
-                                                    <ul class="no-bullets">
-                                                        @foreach($bonDeCommande->lignes as $ligne)
-                                                        <li><input type="number" class="form-control mb-1" name="lignes[{{ $ligne->id }}][quantite_restante]" value="{{ $ligne->quantite_restante }}" required></li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
 
-                    @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                    @endif
-
-                    < </div>
-                        <div>
-
-                            <!-- content-wrapper ends -->
-                            <!-- partial:../../partials/_footer.html -->
-                            <footer class="footer">
-                                <div class="container-fluid clearfix">
-                                    <span class="d-block text-center text-sm-start d-sm-inline-block">Copyright © 2023 <a href="#">BootstrapDash</a>. All rights reserved.</span>
-                                    <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-                                </div>
-                            </footer>
-                            <!-- partial -->
-                        </div>
-                        <!-- container-scroller -->
-                        <!-- plugins:js -->
-                        <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
-                        <!-- endinject -->
-                        <!-- Plugin js for this page -->
-                        <script src="../../../assets/vendors/select2/select2.min.js"></script>
-                        <script src="../../../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
-                        <!-- End plugin js for this page -->
-                        <!-- inject:js -->
-                        <script src="../../../assets/js/off-canvas.js"></script>
-                        <script src="../../../assets/js/hoverable-collapse.js"></script>
-                        <script src="../../../assets/js/misc.js"></script>
-                        <script src="../../../assets/js/settings.js"></script>
-                        <script src="../../../assets/js/todolist.js"></script>
-                        <!-- endinject -->
-                        <!-- Custom js for this page -->
-                        <script src="../../../assets/js/file-upload.js"></script>
-                        <script src="../../../assets/js/typeahead.js"></script>
-                        <script src="../../../assets/js/select2.js"></script>
-                        <!-- End custom js for this page -->
-                        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                        <script>
-                            $('#searchBonInput').on('keyup', function() {
-                                var value = $(this).val().toLowerCase();
-                                $('#order-listing tbody tr').filter(function() {
-                                    $(this).toggle($(this).find('td:eq(0)').text().toLowerCase().indexOf(value) > -1)
-                                });
-                            });
-                        </script>
+                    <!-- plugins:js -->
+                    <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
+                    <!-- endinject -->
+                    <!-- Plugin js for this page -->
+                    <script src="../../../assets/vendors/select2/select2.min.js"></script>
+                    <script src="../../../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+                    <!-- End plugin js for this page -->
+                    <!-- inject:js -->
+                    <script src="../../../assets/js/off-canvas.js"></script>
+                    <script src="../../../assets/js/hoverable-collapse.js"></script>
+                    <script src="../../../assets/js/misc.js"></script>
+                    <script src="../../../assets/js/settings.js"></script>
+                    <script src="../../../assets/js/todolist.js"></script>
+                    <!-- endinject -->
+                    <!-- Custom js for this page -->
+                    <script src="../../../assets/js/file-upload.js"></script>
+                    <script src="../../../assets/js/typeahead.js"></script>
+                    <script src="../../../assets/js/select2.js"></script>
+                    <!-- End custom js for this page -->
 </body>
 
 <!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/pages/forms/basic_elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:42:47 GMT -->

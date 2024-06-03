@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CheifPharmacistMiddleware
 {
     /**
-     * Handle an incoming request.
+     * Handle an incoming requesat.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */

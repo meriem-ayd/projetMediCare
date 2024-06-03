@@ -12,17 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('service', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nom_service');
+            $table->id();
+            $table->string('nom_service'); 
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    
     public function down(): void
     {
-        //
+        Schema::dropIfExists('service');
     }
 };

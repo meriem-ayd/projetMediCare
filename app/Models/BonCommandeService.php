@@ -9,7 +9,7 @@ class BonCommandeService extends Model
 {
     protected $table = 'bon_commande_service';
 
-    protected $primaryKey = 'id_bcs';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'id_phar',
@@ -22,21 +22,21 @@ class BonCommandeService extends Model
 
     public function pharmacien()
     {
-        return $this->belongsTo('App\Pharmacist', 'id');
+        return $this->belongsTo(Pharmacist::class, 'id');
     }
 
     public function medecin()
     {
-        return $this->belongsTo('App\Doctor', 'id');
+        return $this->belongsTo(Doctor::class, 'id');
     }
 
     public function service()
     {
-        return $this->belongsTo('App\Service', 'id');
+        return $this->belongsTo(Service::class, 'id');
     }
 
     public function lignes()
     {
-        return $this->hasMany('App\LigneBonCommandeService', 'id_bcs');
+        return $this->hasMany(LigneBonCommandeService::class, 'id_bcs');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class PharmacistMiddleware
@@ -15,6 +16,12 @@ class PharmacistMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+// Vérifie si l'utilisateur est authentifié
+if (!Auth::check()) {
+    return redirect()->route('getAdminAuth');
+} else {
+    if (Auth::user()->pharmacist) {
         return $next($request);
     }
+}    }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Dci;
@@ -19,9 +20,9 @@ class DciController extends Controller
             'dci' => 'required|string|max:255',
             'forme' => 'required|string|max:255',
             'dosage' => 'required|string|max:50',
-            'quantite_en_stock' => 'required|integer',
-            'prix_unitaire' => 'required|numeric',
-            'Montant' => 'required|numeric',
+            'quantite_en_stock' => 'nullable|integer',
+            'prix_unitaire' => 'nullable|numeric',
+            'Montant' => 'nullable|numeric',
             'date_peremption' => 'required|date',
         ]);
 
@@ -46,29 +47,21 @@ class DciController extends Controller
             'dci' => 'required|string|max:255',
             'forme' => 'required|string|max:255',
             'dosage' => 'required|string|max:50',
-            'quantite_en_stock' => 'required|integer',
-            'prix_unitaire' => 'required|numeric',
-            'Montant' => 'required|numeric',
+            'quantite_en_stock' => 'nullable|integer',
+            'prix_unitaire' => 'nullable|numeric',
+            'Montant' => 'nullable|numeric',
             'date_peremption' => 'required|date',
         ]);
-// Trouvez la DCI par son ID et mettez à jour les données
-$dci = Dci::findOrFail($id);
-$dci->IDdci = $validatedData['IDdci'];
-$dci->dci = $validatedData['dci'];
-$dci->forme = $validatedData['forme'];
-$dci->dosage = $validatedData['dosage'];
-$dci->quantite_en_stock = $validatedData['quantite_en_stock'];
-$dci->prix_unitaire = $validatedData['prix_unitaire'];
-$dci->Montant = $validatedData['Montant'];
-$dci->date_peremption = $validatedData['date_peremption'];
-$dci->save();
-
+    
+        // Calcul du Montant
+        $validatedData['Montant'] = $validatedData['quantite_en_stock'] * $validatedData['prix_unitaire'];
+    
         // Trouvez la DCI par son ID et mettez à jour les données
         $dci = Dci::findOrFail($id);
         $dci->update($validatedData);
-
+    
         // Redirigez l'utilisateur vers la page DCI ou toute autre page pertinente
         return redirect()->route('liste_dci')->with('success', 'La DCI a été mise à jour avec succès.');
     }
-
+    
 }

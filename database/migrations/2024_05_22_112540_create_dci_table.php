@@ -12,22 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('dci', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->integer('IDdci');
             $table->string('dci');
             $table->string('forme');
             $table->string('dosage');
-            $table->integer('quantite_en_stock');
-            $table->float('prix_unitaire');
-            $table->float('Montant');
+            $table->integer('quantite_en_stock')->nullable();
+            $table->float('prix_unitaire')->nullable();
+            $table->float('Montant')->nullable();
             $table->date('date_peremption');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    
     public function down(): void
     {
         Schema::dropIfExists('dci');

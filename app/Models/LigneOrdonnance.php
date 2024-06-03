@@ -5,26 +5,31 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LigneBonCommandeService extends Model
+class LigneOrdonnance extends Model
 {
     use HasFactory;
 
-    protected $table = 'ligne_bon_commande_service';
+    protected $table = 'ligne_ordonnance';
 
     protected $fillable = [
-        'id_bcs',
+        'id_ord',
         'id_commerc',
         'quantite_demandee',
-        'quantite_restante'
+        'posologie',
+        'duree',
     ];
 
-    public function bonCommandeService()
+    public function ordonnance()
     {
-        return $this->belongsTo(BonCommandeService::class, 'id_bcs');
+        return $this->belongsTo(Ordonnance::class, 'id_ord');
     }
 
     public function nomCommercial()
     {
         return $this->belongsTo(NomCommercial::class, 'id_commerc');
+    }
+    public function dci()
+    {
+        return $this->belongsTo(Dci::class, 'id_dci');
     }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/pages/tables/data-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:43:11 GMT -->
+<!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/pages/forms/basic_elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:42:45 GMT -->
 
 <head>
   <!-- Required meta tags -->
@@ -12,8 +12,10 @@
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="../../../assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <!-- endinject -->
@@ -46,7 +48,13 @@
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown d-none d-lg-flex">
             <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-bs-toggle="dropdown">
-
+              <i class="mdi mdi-earth me-2"></i> English </a>
+            <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
+              <a class="dropdown-item" href="#"> French </a>
+              <a class="dropdown-item" href="#"> Spain </a>
+              <a class="dropdown-item" href="#"> Latin </a>
+              <a class="dropdown-item" href="#"> Japanese </a>
+            </div>
           </li>
           <li class="nav-item dropdown d-none d-lg-flex">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
@@ -425,10 +433,10 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="../forms/basic_elements.html">Basic Elements</a></li>
-                <li class="nav-item"><a class="nav-link" href="../forms/advanced_elements.html">Advanced Elements</a></li>
-                <li class="nav-item"><a class="nav-link" href="../forms/validation.html">Validation</a></li>
-                <li class="nav-item"><a class="nav-link" href="../forms/wizard.html">Wizard</a></li>
+                <li class="nav-item"><a class="nav-link" href="basic_elements.html">Basic Elements</a></li>
+                <li class="nav-item"><a class="nav-link" href="advanced_elements.html">Advanced Elements</a></li>
+                <li class="nav-item"><a class="nav-link" href="validation.html">Validation</a></li>
+                <li class="nav-item"><a class="nav-link" href="wizard.html">Wizard</a></li>
               </ul>
             </div>
           </li>
@@ -440,8 +448,8 @@
             </a>
             <div class="collapse" id="editors">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="../forms/text_editor.html">Text editors</a></li>
-                <li class="nav-item"><a class="nav-link" href="../forms/code_editor.html">Code editors</a></li>
+                <li class="nav-item"><a class="nav-link" href="text_editor.html">Text editors</a></li>
+                <li class="nav-item"><a class="nav-link" href="code_editor.html">Code editors</a></li>
               </ul>
             </div>
           </li>
@@ -475,10 +483,10 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="basic-table.html">Basic table</a></li>
-                <li class="nav-item"> <a class="nav-link" href="data-table.html">Data table</a></li>
-                <li class="nav-item"> <a class="nav-link" href="js-grid.html">Js-grid</a></li>
-                <li class="nav-item"> <a class="nav-link" href="sortable-table.html">Sortable table</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../tables/basic-table.html">Basic table</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../tables/data-table.html">Data table</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../tables/js-grid.html">Js-grid</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../tables/sortable-table.html">Sortable table</a></li>
               </ul>
             </div>
           </li>
@@ -599,196 +607,192 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="page-header">
-            <h3 class="page-title"> Data table </h3>
+            <h3 class="page-title"> Form elements </h3>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data table</li>
+                <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Form elements</li>
               </ol>
             </nav>
           </div>
-          <div class="row mb-3">
-            <div class="col">
-              <input type="text" id="searchInput" class="form-control" placeholder="Rechercher par ID DCI">
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title"> table DCI</h4>
-              <div class="row">
-                <div class="col-12">
-                  <table id="order-listing" class="table">
-                    <thead>
-                      <tr>
-                        <th>IDdci</th>
-                        <th>DCI</th>
-                        <th>Forme</th>
-                        <th>Dosage</th>
-                        <th>Date de Péremption</th>
-                        <th>Quantité en Stock</th>
-                        <th>Prix Unitaire</th>
-                        <th>Montant</th>
-                       
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @foreach($dcis as $dci)
-                      <tr id="row{{ $dci->id }}">
-                        <td>{{ $dci->IDdci }}</td>
-                        <td>{{ $dci->dci }}</td>
-                        <td>{{ $dci->forme }}</td>
-                        <td>{{ $dci->dosage }}</td>
-                        <td>{{ $dci->date_peremption }}</td>
-                        <td>{{ $dci->quantite_en_stock }}</td>
-                        <td>{{ $dci->prix_unitaire }}</td>
-                        <td>{{ $dci->Montant }}</td>
-                        
-                        <td>
-                          <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifierModal{{ $dci->id }}" title="Modifier {{ $dci->dci }}">Modifier</button>
-
-                        </td>
-                      </tr>
+          <div class="container mt-5">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Ordonnance</h4>
+                  @if($errors->any())
+                  <div class="alert alert-danger">
+                    <ul>
+                      @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
                       @endforeach
-
-                    </tbody>
-                  </table>
-                </div> @foreach($dcis as $dci)
-                <div class="modal fade" id="modifierModal{{ $dci->id }}" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel{{ $dci->id }}" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="modifierModalLabel{{ $dci->id }}">Modifier DCI</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form action="{{ route('updateDCI', $dci->id) }}" method="POST" class="custom-form">
-                          @csrf
-                          @method('PUT')
-                          <div class="form-group">
-                            <label for="IDdci">ID DCI</label>
-                            <input type="text" class="form-control" name="IDdci" value="{{ $dci->IDdci }}" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="dci">DCI</label>
-                            <input type="text" class="form-control" name="dci" value="{{ $dci->dci }}" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="forme">Forme</label>
-                            <input type="text" class="form-control" name="forme" value="{{ $dci->forme }}" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="dosage">Dosage</label>
-                            <input type="text" class="form-control" name="dosage" value="{{ $dci->dosage }}" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="date_peremption">Date de Péremption</label>
-                            <input type="date" class="form-control" name="date_peremption" value="{{ $dci->date_peremption }}" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="quantite_en_stock">Quantité en Stock</label>
-                            <input type="number" class="form-control" name="quantite_en_stock" id="quantite_en_stock{{ $dci->id }}" value="{{ $dci->quantite_en_stock }}" oninput="calculateMontant('{{ $dci->id }}')" required>
-
-                          </div>
-                          <div class="form-group">
-                            <label for="prix_unitaire">Prix Unitaire</label>
-                            <input type="number" class="form-control" name="prix_unitaire" id="prix_unitaire{{ $dci->id }}" value="{{ $dci->prix_unitaire }}" oninput="calculateMontant('{{ $dci->id }}')" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="Montant">Montant</label>
-                            <input type="number" class="form-control" name="Montant" id="Montant{{ $dci->id }}" value="{{ $dci->Montant }}" readonly required>
-                          </div>
-                         
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
-                          </div>
-                        </form>
-                      </div>
-
-                    </div>
+                    </ul>
                   </div>
+                  @endif
+                  <form action="{{ route('ordonnance.store') }}" method="POST">
+                    @csrf
+
+                    <!-- Informations du patient -->
+                    <div class="form-group">
+                      <label for="nom_patient">Nom du patient:</label>
+                      <input type="text" class="form-control" id="nom_patient" name="nom_patient" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="prenom_patient">Prénom du patient:</label>
+                      <input type="text" class="form-control" id="prenom_patient" name="prenom_patient" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="age">Age:</label>
+                      <input type="number" class="form-control" id="age" name="age" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="date">Date</label>
+                      <input type="date" class="form-control" id="date" name="date" title="Date de la commande" value="{{ old('date') }}" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="etat">État</label>
+                      <input type="text" class="form-control" id="etat" name="etat" title="État de la commande" value="{{ old('etat') }}" required>
+                    </div>
+
+                    <!-- Sélection du service -->
+                    <div class="form-group">
+                      <label for="service">Service:</label>
+                      <select class="form-control" id="service" name="service" required>
+                        @foreach($services as $service)
+                        <option value="{{ $service->id }}">{{ $service->nom_service }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+
+                    <!-- Lignes d'ordonnance -->
+                    <div id="lignes-container">
+                      <div class="form-group ligne-ordonnance">
+                        <!-- Sélection du DCI -->
+                        <label for="dci">DCI:</label>
+                        <select class="form-control" id="dci" name="dci" required>
+                          @foreach($dcis as $dci)
+                          <option value="{{ $dci->id }}">{{ $dci->dci }} - {{ $dci->forme }} - {{ $dci->dosage }}</option>
+                          @endforeach
+                        </select>
+
+                        <label for="quantite_demandee">Quantité demandée:</label>
+                        <input type="number" class="form-control" name="quantite_demandee[]" required>
+
+                        <label for="posologie">Posologie:</label>
+                        <select class="form-control" name="posologie[]" required>
+                          <option value="1/jour">1/jour</option>
+                          <option value="2/jour">2/jour</option>
+                          <option value="3/jour">3/jour</option>
+                        </select>
+
+                        <label for="duree">Durée:</label>
+                        <input type="text" class="form-control duree" name="duree[]" min="1" required>
+                      </div>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" onclick="ajouterLigne()">Ajouter une ligne</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                  </form>
+
                 </div>
-                @endforeach
               </div>
             </div>
+
+
+            @if (session('success'))
+            <div class="alert alert-success">
+              {{ session('success') }}
+            </div>
+            @endif
           </div>
-          @if (session('success'))
-          <div class="alert alert-success">
-            {{ session('success') }}
-          </div>
-          @endif
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+              <span class="d-block text-center text-sm-start d-sm-inline-block">Copyright © 2023 <a href="#">BootstrapDash</a>. All rights reserved.</span>
+              <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../../assets/vendors/select2/select2.min.js"></script>
+    <script src="../../../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../../assets/js/off-canvas.js"></script>
+    <script src="../../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../../assets/js/misc.js"></script>
+    <script src="../../../assets/js/settings.js"></script>
+    <script src="../../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../../assets/js/file-upload.js"></script>
+    <script src="../../../assets/js/typeahead.js"></script>
+    <script src="../../../assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
 
-          <!-- Inclure jQuery -->
-          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-          <!-- Inclure Bootstrap JavaScript -->
-          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
-</div>
-</div>
-</div>
-</div>
 
-
-<!-- content-wrapper ends -->
-<!-- partial:../../partials/_footer.html -->
-<footer class="footer">
-  <div class="container-fluid clearfix">
-    <span class="d-block text-center text-sm-start d-sm-inline-block">Copyright © 2023 <a href="#">BootstrapDash</a>. All rights reserved.</span>
-    <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-  </div>
-</footer>
-<!-- partial -->
-</div>
-<!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
-<!-- plugins:js -->
-<script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
-<!-- endinject -->
-<!-- Plugin js for this page -->
-<script src="../../../assets/vendors/datatables.net/jquery.dataTables.js"></script>
-<script src="../../../assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-<!-- End plugin js for this page -->
-<!-- inject:js -->
-<script src="../../../assets/js/off-canvas.js"></script>
-<script src="../../../assets/js/hoverable-collapse.js"></script>
-<script src="../../../assets/js/misc.js"></script>
-<script src="../../../assets/js/settings.js"></script>
-<script src="../../../assets/js/todolist.js"></script>
-<!-- endinject -->
-<!-- Custom js for this page -->
-<script src="../../../assets/js/data-table.js"></script>
-<!-- End custom js for this page -->
-</body>
+<!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/pages/forms/basic_elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:42:47 GMT -->
 <script>
-  // Fonction pour filtrer les lignes de la table en fonction de la valeur saisie dans la barre de recherche
-  $(document).ready(function() {
-    $('#searchInput').on('keyup', function() {
-      var value = $(this).val().toLowerCase();
-      $('#order-listing tbody tr').filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
+  function ajouterLigne() {
+    const lignesContainer = document.getElementById('lignes-container');
+    const nouvelleLigne = document.createElement('div');
+    nouvelleLigne.classList.add('form-group', 'ligne-ordonnance');
+    nouvelleLigne.innerHTML = `
+            <label for="dci">DCI:</label>
+            <select class="form-control" name="dci" required>
+                @foreach($dcis as $dci)
+                    <option value="{{ $dci->id }}">{{ $dci->dci }} - {{ $dci->forme }} - {{ $dci->dosage }}</option>
+                @endforeach
+            </select>
+
+            <label for="quantite_demandee">Quantité demandée:</label>
+            <input type="number" class="form-control" name="quantite_demandee[]" min="1" required >
+
+            <label for="posologie">Posologie:</label>
+            <select class="form-control" name="posologie[]" required>
+                <option value="1/jour">1/jour</option>
+                <option value="2/jour">2/jour</option>
+                <option value="3/jour">3/jour</option>
+            </select>
+
+            <label for="duree">Durée:</label>
+            <input type="text" class="form-control duree" name="duree[]" min="1" required>
+        `;
+    lignesContainer.appendChild(nouvelleLigne);
+    addEventListenersToNewInputs(nouvelleLigne);
+  }
+
+  function addEventListenersToNewInputs(ligne) {
+    const dureeInput = ligne.querySelector('.duree');
+    dureeInput.addEventListener('blur', function() {
+      if (dureeInput.value) {
+        dureeInput.value += ' jours';
+      }
+    });
+  }
+
+
+
+  document.querySelectorAll('.duree').forEach(input => {
+    input.addEventListener('blur', function() {
+      if (input.value) {
+        input.value += ' jours';
+      }
     });
   });
-
-  function calculateMontant(id) {
-    var quantite = document.getElementById('quantite_en_stock' + id).value;
-    var prix = document.getElementById('prix_unitaire' + id).value;
-    var montant = document.getElementById('Montant' + id);
-
-    if (quantite && prix) {
-      montant.value = quantite * prix;
-    } else {
-      montant.value = 0;
-    }
-  }
 </script>
-
-<!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/pages/tables/data-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:43:12 GMT -->
 
 </html>
