@@ -363,6 +363,18 @@
                             Ajouter un Bon de commande Fournisseur
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('bonlivraison.show') }}">
+                            Bon de Livraison service
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('pharmacien.listeBonsDeCommande') }}">
+                            liste bons de commande
+                        </a>
+                    </li>
+                    
+
                     @endif
 
                     @if(Auth::check() && Auth::user()->doctor()->exists())

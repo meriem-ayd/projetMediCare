@@ -22,17 +22,17 @@ class BonCommandeService extends Model
 
     public function pharmacien()
     {
-        return $this->belongsTo(Pharmacist::class, 'id');
+        return $this->belongsTo(Pharmacist::class, 'id_phar');
     }
 
     public function medecin()
     {
-        return $this->belongsTo(Doctor::class, 'id');
+        return $this->belongsTo(Doctor::class, 'id_doc');
     }
 
     public function service()
     {
-        return $this->belongsTo(Service::class, 'id');
+        return $this->belongsTo(Service::class, 'id_service');
     }
 
     public function lignes()

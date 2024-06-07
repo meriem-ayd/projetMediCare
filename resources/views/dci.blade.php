@@ -617,50 +617,67 @@
           </div>
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
-              <div class="card-body">
+              <div class="card-header text-center">
                 <h4 class="card-title">Ajouter DCI</h4>
+              </div>
+              <div class="card-body">
+
                 <form class="forms-sample" action="{{ route('ajouter_dci') }}" method="POST">
                   @csrf
                   <div class="form-group row">
-                    <div class="col-md-6">
-                      <label for="IDdci" class="col-form-label">ID DCI</label>
-                      <input type="text" class="form-control" id="IDdci" name="IDdci" placeholder="ID DCI">
+                    <div class="col-md-4">
+                      <label for="famille_id" class="col-form-label">Famille</label>
+                      <select class="form-control" id="famille_id" name="famille_id">
+                        @foreach($familles as $famille)
+                        <option value="{{ $famille->id }}">{{ $famille->nom }}</option>
+                        @endforeach
+                      </select>
                     </div>
-                    <div class="col-md-6">
+
+                    <!-- <div class="col-md-4" > -->
+                    <!-- <label for="IDdci" class="col-form-label">ID DCI</label> -->
+                    <!-- <input type="hidden" class="form-control" id="IDdci" name="IDdci" placeholder="ID DCI">
+                    </div> -->
+                    <div class="col-md-4">
                       <label for="dci" class="col-form-label">DCI</label>
                       <input type="text" class="form-control" id="dci" name="dci" placeholder="DCI">
                     </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-md-6">
-                      <label for="forme" class="col-form-label">Forme</label>
-                      <input type="text" class="form-control" id="forme" name="forme" placeholder="Forme">
-                    </div>
-                    <div class="col-md-6">
-                      <label for="dosage" class="col-form-label">Dosage</label>
-                      <input type="text" class="form-control" id="dosage" name="dosage" placeholder="Dosage">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-md-6">
-                      <label for="quantite_en_stock" class="col-form-label">Quantité en Stock</label>
-                      <input type="number" class="form-control" id="quantite_en_stock" name="quantite_en_stock" placeholder="Quantité en Stock">
-                    </div>
-                    <div class="col-md-6">
-                      <label for="prix_unitaire" class="col-form-label">Prix Unitaire</label>
-                      <input type="number" class="form-control" id="prix_unitaire" name="prix_unitaire" placeholder="Prix Unitaire">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-md-6">
-                      <label for="Montant" class="col-form-label">Montant</label>
-                      <input type="number" class="form-control" id="Montant" name="Montant" placeholder="Montant">
-                    </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <label for="date_peremption" class="col-form-label">Date de Péremption</label>
                       <input type="date" class="form-control" id="date_peremption" name="date_peremption">
                     </div>
                   </div>
+                  <div class="form-group row">
+                    <div class="col-md-4">
+                      <label for="forme" class="col-form-label">Forme</label>
+                      <input type="text" class="form-control" id="forme" name="forme" placeholder="Forme">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="dosage" class="col-form-label">Dosage</label>
+                      <input type="text" class="form-control" id="dosage" name="dosage" placeholder="Dosage">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="numero_lot" class="col-form-label">N° Lot</label>
+                      <input type="text" class="form-control" id="numero_lot" name="numero_lot" placeholder="N° Lot">
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <div class="col-md-4">
+                      <label for="quantite_en_stock" class="col-form-label">Quantité en Stock</label>
+                      <input type="number" class="form-control" id="quantite_en_stock" name="quantite_en_stock" placeholder="Quantité en Stock">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="prix_unitaire" class="col-form-label">Prix Unitaire</label>
+                      <input type="number" class="form-control" id="prix_unitaire" name="prix_unitaire" placeholder="Prix Unitaire">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="Montant" class="col-form-label">Montant</label>
+                      <input type="number" class="form-control" id="Montant" name="Montant" placeholder="Montant">
+                    </div>
+                  </div>
+
                   <button type="submit" class="btn btn-primary me-2">Ajouter</button>
                   <button type="reset" class="btn btn-light">Annuler</button>
                 </form>
@@ -673,6 +690,16 @@
             {{ session('success') }}
           </div>
           @endif
+          @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          @endif
+
 
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->

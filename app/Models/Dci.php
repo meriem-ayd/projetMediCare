@@ -12,6 +12,10 @@ class Dci extends Model
     protected $fillable = [
       'IDdci', 'dci', 'forme', 'dosage', 
       'quantite_en_stock', 'prix_unitaire', 
-      'Montant', 'date_peremption'
+      'Montant', 'date_peremption','numero_lot', 'famille_id'
   ];
+  public function famille()
+  {
+      return $this->belongsTo(Famille::class);
+  }
 }

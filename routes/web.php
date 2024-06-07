@@ -36,16 +36,17 @@ Route::middleware(['adminMiddleware'])->group(function () {
         Route::post('/bon_commande_service', [MedecinController::class, 'storeBonDeCommande'])->name('bon_commande_service.store');
         Route::get('/bons-de-commande', [MedecinController::class, 'listeBonsDeCommandeMedecin'])->name('bons-de-commande.medecin');
         Route::put('/bonDeCommande/{id}', [MedecinController::class, 'update'])->name('updateBonDeCommande');
-        
+
         Route::get('/ordonnance', [MedecinController::class, 'create'])->name('ordonnance.create');
         Route::post('/ordonnance', [MedecinController::class, 'store'])->name('ordonnance.store');
         Route::get('/listeordonnance', [MedecinController::class, 'listeOrdonnancesMedecin'])->name('ordonnances.index');
-
     });
 
     Route::middleware(['pharmacist'])->group(function () {
         Route::get('/AjouterBCF', [PharmacienController::class, 'bonCF'])->name('bonCF');
-
+        Route::get('/bonlivraison', [PharmacienController::class, 'showBonLivraison'])->name('bonlivraison.show');
+        Route::get('/liste-bons-de-commande', [PharmacienController::class, 'listeTousBonsDeCommande'])->name('pharmacien.listeBonsDeCommande');
+        Route::get('/bondecommande/{id}', [PharmacienController::class, 'showBonDeCommande'])->name('bondecommande.show');
 
 
     });

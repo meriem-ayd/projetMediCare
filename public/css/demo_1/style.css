@@ -19028,8 +19028,10 @@ dl {
 /* === Landing screens === */
 /* Auth */
 .auth.login-full-bg {
-  background: url("../../images/auth/login_1.jpg");
-  background-size: cover; }
+  background: url("../../images/auth/login\ \(2\).jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
 
 .auth .login-half-bg {
   background: url("../../images/auth/login_2.jpg");
@@ -20505,3 +20507,4 @@ dl {
     margin-left: 10px; }
 
 /*# sourceMappingURL=style.css.map */
+/*  bon de commande service  */

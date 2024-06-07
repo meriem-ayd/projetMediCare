@@ -24,13 +24,14 @@ class MedecinController extends Controller
         $services = Service::all();
         // Récupérer l'ID du premier pharmacien
         $idPharmacien = Pharmacist::first()->id;
-        // Récupérer l'ID du premier médecin associé à l'utilisateur authentifié
-        $idMedecin = auth()->user()->doctor->first()->id;
-
+        // Récupérer l'ID et le nom du premier médecin associé à l'utilisateur authentifié
+        $medecin = auth()->user()->doctor->first();
+        $idMedecin = $medecin->id;
+        $nomMedecin = auth()->user()->name; // Supposant que le nom de l'utilisateur est stocké dans le champ 'name'
 
         $idCommerc = $nomsCommerciaux->first()->id_commerc; // Choisir le premier nom commercial comme valeur par défaut, par exemple
 
-        return view('bondecommande', compact('dcis', 'nomsCommerciaux', 'services', 'idPharmacien', 'idMedecin', 'idCommerc'));
+        return view('bondecommande', compact('dcis', 'nomsCommerciaux', 'services', 'idPharmacien', 'idMedecin', 'idCommerc', 'nomMedecin'));
     }
     public function storeBonDeCommande(Request $request)
     {
@@ -78,7 +79,7 @@ class MedecinController extends Controller
             $idMedecin = $user->doctor->first()->id;
             // Récupérer les bons de commande du médecin avec les lignes et les informations des DCI
             $bonsDeCommande = BonCommandeService::where('id_doc', $idMedecin)
-                ->with('lignes.nomCommercial.dci')
+                ->with('lignes.nomCommercial.dci','medecin.user')
                 ->get();
             return view('liste', compact('bonsDeCommande'));
         } else {

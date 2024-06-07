@@ -23,9 +23,24 @@
     <link rel="stylesheet" href="css/demo_1/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="https://demo.bootstrapdash.com/xollo/template/assets/images/favicon.ico" />
+    <style>
+        .form-control {
+            background-color: transparent;
+            border-style: none;
+            border-bottom: solid 1px gray;
+            outline: none;
+            padding: 3px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    </style>
 </head>
 
+
+
 <body>
+
     <div class="container-scroller">
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -617,8 +632,10 @@
                     </div>
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card">
+                            <div class="card-header text-center">
+                                <h4 class="card-title">Bon de commande service</h4>
+                            </div>
                             <div class="card-body">
-                                <h4 class="card-title">Bon de commande srvice</h4>
                                 @if($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
@@ -633,45 +650,61 @@
                                     <input type="hidden" id="id_phar" name="id_phar" value="{{ $idPharmacien }}">
                                     <input type="hidden" id="id_doc" name="id_doc" value="{{ $idMedecin }}">
 
-                                    <div class="form-group">
-                                        <label for="id_service">Service</label>
-                                        <select class="form-control" id="id_service" name="id_service" title="Service" required>
-                                            @foreach($services as $service)
-                                            <option value="{{ $service->id }}">{{ $service->nom_service }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="num_bc">Numéro de Bon de Commande</label>
-                                        <input type="number" class="form-control" id="num_bc" name="num_bc" title="Numéro de Bon de Commande" value="{{ old('num_bc') }}" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="date">Date</label>
-                                        <input type="date" class="form-control" id="date" name="date" title="Date de la commande" value="{{ old('date') }}" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="etat">État</label>
-                                        <input type="text" class="form-control" id="etat" name="etat" title="État de la commande" value="{{ old('etat') }}" required>
-                                    </div>
-                                    <div id="lignes-container">
-                                        <div class="form-group ligne-bon">
-                                            <input type="hidden" name="lignes[0][id_commerc]" value="{{ $idCommerc }}">
-
-                                            <label for="id_dci">DCI</label>
-                                            <select class="form-control" name="lignes[0][id_dci]" title="DCI" required>
-                                                @foreach($dcis as $dci)
-                                                <option value="{{ $dci->IDdci }}">{{ $dci->dci }} - {{ $dci->forme }} - {{ $dci->dosage }}</option>
+                                    <div class="form-group row">
+                                        <label for="id_service" class="col-sm-3 col-form-label">Service:</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control" id="id_service" name="id_service" title="Service" required>
+                                                @foreach($services as $service)
+                                                <option value="{{ $service->id }}">{{ $service->nom_service }}</option>
                                                 @endforeach
                                             </select>
-
-                                            <label for="quantite_demandee">Quantité Demandée</label>
-                                            <input type="number" class="form-control" name="lignes[0][quantite_demandee]"  required>
-
-                                            <label for="quantite_restante">Quantité Restante</label>
-                                            <input type="number" class="form-control" name="lignes[0][quantite_restante]"  required>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-secondary" onclick="ajouterLigne()">Ajouter une ligne</button>
+                                    <div class="form-group row">
+                                        <label for="num_bc" class="col-sm-3 col-form-label">Numéro de Bon de Commande:</label>
+                                        <div class="col-sm-6">
+                                            <input type="number" class="form-control" id="num_bc" name="num_bc" title="Numéro de Bon de Commande" value="{{ old('num_bc') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="date" class="col-sm-3 col-form-label">Date:</label>
+                                        <div class="col-sm-6">
+                                            <input type="date" class="form-control" id="date" name="date" title="Date de la commande" value="{{ old('date') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="etat" class="col-sm-3 col-form-label">État:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="etat" name="etat" title="État de la commande" value="{{ old('etat') }}" required>
+                                        </div>
+                                    </div>
+
+                                    <div id="lignes-container" class="form-group ligne-bon">
+                                        <input type="hidden" name="lignes[0][id_commerc]" value="{{ $idCommerc }}">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label for="id_dci" class="col-form-label">DCI:</label>
+                                                <select class="form-control" name="lignes[0][id_dci]" title="DCI" required>
+                                                    @foreach($dcis as $dci)
+                                                    <option value="{{ $dci->IDdci }}">{{ $dci->dci }} - {{ $dci->forme }} - {{ $dci->dosage }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label for="quantite_demandee" class="col-form-label">Quantité Demandée:</label>
+                                                <input type="number" class="form-control" name="lignes[0][quantite_demandee]" required>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label for="quantite_restante" class="col-form-label">Quantité Restante:</label>
+                                                <input type="number" class="form-control" name="lignes[0][quantite_restante]" required>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <span class="text-danger croix" onclick="supprimerLigne(this)">✖</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn " onclick="ajouterLigne()">Ajouter une ligne</button>
                                     <button type="submit" class="btn btn-primary">Envoyé</button>
                                 </form>
                             </div>
@@ -683,40 +716,43 @@
                         {{ session('success') }}
                     </div>
                     @endif
-            <!-- content-wrapper ends -->
-            <!-- partial:../../partials/_footer.html -->
-            <footer class="footer">
-                <div class="container-fluid clearfix">
-                    <span class="d-block text-center text-sm-start d-sm-inline-block">Copyright © 2023 <a href="#">BootstrapDash</a>. All rights reserved.</span>
-                    <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+
+
+
+                    <!-- content-wrapper ends -->
+                    <!-- partial:../../partials/_footer.html -->
+                    <footer class="footer">
+                        <div class="container-fluid clearfix">
+                            <span class="d-block text-center text-sm-start d-sm-inline-block">Copyright © 2023 <a href="#">BootstrapDash</a>. All rights reserved.</span>
+                            <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+                        </div>
+                    </footer>
+                    <!-- partial -->
                 </div>
-            </footer>
-            <!-- partial -->
+                <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="../../../assets/vendors/select2/select2.min.js"></script>
-    <script src="../../../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="../../../assets/js/off-canvas.js"></script>
-    <script src="../../../assets/js/hoverable-collapse.js"></script>
-    <script src="../../../assets/js/misc.js"></script>
-    <script src="../../../assets/js/settings.js"></script>
-    <script src="../../../assets/js/todolist.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="../../../assets/js/file-upload.js"></script>
-    <script src="../../../assets/js/typeahead.js"></script>
-    <script src="../../../assets/js/select2.js"></script>
-    <!-- End custom js for this page -->
+        <!-- container-scroller -->
+        <!-- plugins:js -->
+        <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="../../../assets/vendors/select2/select2.min.js"></script>
+        <script src="../../../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="../../../assets/js/off-canvas.js"></script>
+        <script src="../../../assets/js/hoverable-collapse.js"></script>
+        <script src="../../../assets/js/misc.js"></script>
+        <script src="../../../assets/js/settings.js"></script>
+        <script src="../../../assets/js/todolist.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page -->
+        <script src="../../../assets/js/file-upload.js"></script>
+        <script src="../../../assets/js/typeahead.js"></script>
+        <script src="../../../assets/js/select2.js"></script>
+        <!-- End custom js for this page -->
 </body>
 
 <!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/pages/forms/basic_elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:42:47 GMT -->
@@ -728,21 +764,42 @@
         const newLigne = document.createElement('div');
         newLigne.className = 'form-group ligne-bon';
         newLigne.innerHTML = `
-            <input type="hidden" name="lignes[${ligneIndex}][id_commerc]" value="{{ $idCommerc }}">
-            <label for="id_dci">DCI</label>
-            <select class="form-control" name="lignes[${ligneIndex}][id_dci]" title="DCI" required>
-                @foreach($dcis as $dci)
-                    <option value="{{ $dci->IDdci }}">{{ $dci->dci }} - {{ $dci->forme }} - {{ $dci->dosage }}</option>
-                @endforeach
-            </select>
-            <label for="quantite_demandee">Quantité Demandée</label>
-            <input type="number" class="form-control" name="lignes[${ligneIndex}][quantite_demandee]" title="Quantité Demandée" placeholder="Quantité Demandée" required>
-            <label for="quantite_restante">Quantité Restante</label>
-            <input type="number" class="form-control" name="lignes[${ligneIndex}][quantite_restante]" title="Quantité Restante" placeholder="Quantité Restante" required>
+            <div class="row align-items-center ligne">
+                <input type="hidden" name="lignes[${ligneIndex}][id_commerc]" value="{{ $idCommerc }}">
+                <div class="col-sm-3">
+                   
+                    <select class="form-control" name="lignes[${ligneIndex}][id_dci]" title="DCI" required>
+                        @foreach($dcis as $dci)
+                            <option value="{{ $dci->IDdci }}">{{ $dci->dci }} - {{ $dci->forme }} - {{ $dci->dosage }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                  
+                    <input type="number" class="form-control" name="lignes[${ligneIndex}][quantite_demandee]" title="Quantité Demandée" required>
+                </div>
+                <div class="col-sm-3">
+                    
+                    <input type="number" class="form-control" name="lignes[${ligneIndex}][quantite_restante]" title="Quantité Restante"  required>
+                </div>
+                <div class="col-sm-3">
+                    <span class="text-danger croix" onclick="supprimerLigne(this)">✖</span>
+                </div>
+            </div>
         `;
         container.appendChild(newLigne);
         ligneIndex++;
     }
+
+    function supprimerLigne(croix) {
+        const ligne = croix.closest('.ligne');
+        ligne.remove();
+    }
 </script>
+
+
+
+
+
 
 </html>

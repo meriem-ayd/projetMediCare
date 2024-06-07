@@ -612,111 +612,128 @@
               <input type="text" id="searchInput" class="form-control" placeholder="Rechercher par ID DCI">
             </div>
           </div>
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title"> table DCI</h4>
-              <div class="row">
-                <div class="col-12">
-                  <table id="order-listing" class="table">
-                    <thead>
-                      <tr>
-                        <th>IDdci</th>
-                        <th>DCI</th>
-                        <th>Forme</th>
-                        <th>Dosage</th>
-                        <th>Date de Péremption</th>
-                        <th>Quantité en Stock</th>
-                        <th>Prix Unitaire</th>
-                        <th>Montant</th>
-                       
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @foreach($dcis as $dci)
-                      <tr id="row{{ $dci->id }}">
-                        <td>{{ $dci->IDdci }}</td>
-                        <td>{{ $dci->dci }}</td>
-                        <td>{{ $dci->forme }}</td>
-                        <td>{{ $dci->dosage }}</td>
-                        <td>{{ $dci->date_peremption }}</td>
-                        <td>{{ $dci->quantite_en_stock }}</td>
-                        <td>{{ $dci->prix_unitaire }}</td>
-                        <td>{{ $dci->Montant }}</td>
-                        
-                        <td>
-                          <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifierModal{{ $dci->id }}" title="Modifier {{ $dci->dci }}">Modifier</button>
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Table DCI</h4>
+                <div class="row">
+                  <div class="col-12">
+                    <table id="order-listing" class="table">
+                      <thead>
+                        <tr>
+                          <th>IDdci</th>
+                          <th>DCI</th>
+                          <th>Forme</th>
+                          <th>Dosage</th>
+                          <th>N° Lot</th>
+                          <th>Date de Péremption</th>
+                          <th>Quantité en Stock</th>
+                          <th>Prix Unitaire</th>
+                          <th>Montant</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($dcis as $dci)
+                        <tr id="row{{ $dci->id }}">
+                          <td>{{ $dci->IDdci }}</td>
+                          <td>{{ $dci->dci }}</td>
+                          <td>{{ $dci->forme }}</td>
+                          <td>{{ $dci->dosage }}</td>
+                          <td>{{ $dci->numero_lot }}</td>
+                          <td>{{ $dci->date_peremption }}</td>
+                          <td>{{ $dci->quantite_en_stock }}</td>
+                          <td>{{ $dci->prix_unitaire }}</td>
+                          <td>{{ $dci->Montant }}</td>
+                          <td>
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifierModal{{ $dci->id }}" title="Modifier {{ $dci->dci }}">Modifier</button>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                  @foreach($dcis as $dci)
+                  <div class="modal fade" id="modifierModal{{ $dci->id }}" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel{{ $dci->id }}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="modifierModalLabel{{ $dci->id }}">Modifier DCI</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form action="{{ route('updateDCI', $dci->id) }}" method="POST" class="custom-form">
+                            @csrf
+                            @method('PUT')
 
-                        </td>
-                      </tr>
-                      @endforeach
-
-                    </tbody>
-                  </table>
-                </div> @foreach($dcis as $dci)
-                <div class="modal fade" id="modifierModal{{ $dci->id }}" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel{{ $dci->id }}" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="modifierModalLabel{{ $dci->id }}">Modifier DCI</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
+                            <div class="form-group">
+                              <label for="dci">DCI</label>
+                              <input type="text" class="form-control" name="dci" value="{{ $dci->dci }}" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="forme">Forme</label>
+                              <input type="text" class="form-control" name="forme" value="{{ $dci->forme }}" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="dosage">Dosage</label>
+                              <input type="text" class="form-control" name="dosage" value="{{ $dci->dosage }}" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="numero_lot">N° Lot</label>
+                              <input type="text" class="form-control" name="numero_lot" value="{{ $dci->numero_lot }}" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="date_peremption">Date de Péremption</label>
+                              <input type="date" class="form-control" name="date_peremption" value="{{ $dci->date_peremption }}">
+                            </div>
+                            <div class="form-group">
+                              <label for="quantite_en_stock">Quantité en Stock</label>
+                              <input type="number" class="form-control" name="quantite_en_stock" id="quantite_en_stock{{ $dci->id }}" value="{{ $dci->quantite_en_stock }}" oninput="calculateMontant('{{ $dci->id }}')">
+                            </div>
+                            <div class="form-group">
+                              <label for="prix_unitaire">Prix Unitaire</label>
+                              <input type="number" class="form-control" name="prix_unitaire" id="prix_unitaire{{ $dci->id }}" value="{{ $dci->prix_unitaire }}" oninput="calculateMontant('{{ $dci->id }}')">
+                            </div>
+                            <div class="form-group">
+                              <label for="Montant">Montant</label>
+                              <input type="number" class="form-control" name="Montant" id="Montant{{ $dci->id }}" value="{{ $dci->Montant }}" readonly>
+                            </div>
+                            <div class="form-group">
+                              <label for="famille_id">Famille</label>
+                              <select class="form-control" name="famille_id">
+                                @foreach($familles as $famille)
+                                <option value="{{ $famille->id }}" {{ $dci->famille_id == $famille->id ? 'selected' : '' }}>{{ $famille->nom }}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
+                            </div>
+                          </form>
+                        </div>
                       </div>
-                      <div class="modal-body">
-                        <form action="{{ route('updateDCI', $dci->id) }}" method="POST" class="custom-form">
-                          @csrf
-                          @method('PUT')
-                          <div class="form-group">
-                            <label for="IDdci">ID DCI</label>
-                            <input type="text" class="form-control" name="IDdci" value="{{ $dci->IDdci }}" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="dci">DCI</label>
-                            <input type="text" class="form-control" name="dci" value="{{ $dci->dci }}" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="forme">Forme</label>
-                            <input type="text" class="form-control" name="forme" value="{{ $dci->forme }}" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="dosage">Dosage</label>
-                            <input type="text" class="form-control" name="dosage" value="{{ $dci->dosage }}" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="date_peremption">Date de Péremption</label>
-                            <input type="date" class="form-control" name="date_peremption" value="{{ $dci->date_peremption }}" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="quantite_en_stock">Quantité en Stock</label>
-                            <input type="number" class="form-control" name="quantite_en_stock" id="quantite_en_stock{{ $dci->id }}" value="{{ $dci->quantite_en_stock }}" oninput="calculateMontant('{{ $dci->id }}')" required>
-
-                          </div>
-                          <div class="form-group">
-                            <label for="prix_unitaire">Prix Unitaire</label>
-                            <input type="number" class="form-control" name="prix_unitaire" id="prix_unitaire{{ $dci->id }}" value="{{ $dci->prix_unitaire }}" oninput="calculateMontant('{{ $dci->id }}')" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="Montant">Montant</label>
-                            <input type="number" class="form-control" name="Montant" id="Montant{{ $dci->id }}" value="{{ $dci->Montant }}" readonly required>
-                          </div>
-                         
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
-                          </div>
-                        </form>
-                      </div>
-
                     </div>
                   </div>
+                  @endforeach
                 </div>
-                @endforeach
               </div>
             </div>
           </div>
+
           @if (session('success'))
           <div class="alert alert-success">
             {{ session('success') }}
+          </div>
+          @endif
+          @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
           </div>
           @endif
 
@@ -776,17 +793,17 @@
     });
   });
 
-  function calculateMontant(id) {
-    var quantite = document.getElementById('quantite_en_stock' + id).value;
-    var prix = document.getElementById('prix_unitaire' + id).value;
-    var montant = document.getElementById('Montant' + id);
+  // function calculateMontant(id) {
+  //   var quantite = document.getElementById('quantite_en_stock' + id).value;
+  //   var prix = document.getElementById('prix_unitaire' + id).value;
+  //   var montant = document.getElementById('Montant' + id);
 
-    if (quantite && prix) {
-      montant.value = quantite * prix;
-    } else {
-      montant.value = 0;
-    }
-  }
+  //   if (quantite && prix) {
+  //     montant.value = quantite * prix;
+  //   } else {
+  //     montant.value = 0;
+  //   }
+  // }
 </script>
 
 <!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/pages/tables/data-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:43:12 GMT -->

@@ -622,7 +622,7 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Tableau des Bons de Commande</h4>
+                            <h4 class="card-title">Liste des Bons de Commande</h4>
                             <div class="row">
                                 <div class="col-12">
                                     <table id="order-listing" class="table">
@@ -630,20 +630,19 @@
                                             <tr>
                                                 <th>Bon N°</th>
                                                 <th>Date</th>
-                                                <th>Médecin</th> <!-- Nouvelle colonne pour le médecin -->
                                                 <th>DCI/Forme/Dosage</th>
                                                 <th>Quantité Demandée</th>
                                                 <th>Quantité Restante</th>
                                                 <th>État</th>
+                                                <th>Médecin</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($bonsDeCommande as $bonDeCommande)
+                                            @foreach($bonsDeCommandeMedecins as $bonDeCommande)
                                             <tr id="row{{ $bonDeCommande->id }}">
                                                 <td>{{ $bonDeCommande->num_bc }}</td>
                                                 <td>{{ $bonDeCommande->date }}</td>
-                                                <td>{{ $bonDeCommande->medecin->user->name }}</td> <!-- Affichage du nom du médecin -->
                                                 <td>
                                                     <ul class="no-bullets">
                                                         @foreach($bonDeCommande->lignes as $ligne)
@@ -666,78 +665,18 @@
                                                     </ul>
                                                 </td>
                                                 <td>{{ $bonDeCommande->etat }}</td>
+                                                <td>{{ $bonDeCommande->medecin ? $bonDeCommande->medecin->user->name : 'N/A' }}</td>
                                                 <td>
-                                                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifierModal{{ $bonDeCommande->id }}" title="Modifier le Bon de Commande">Modifier</button>
+                                                <a href="{{ route('bondecommande.show', $bonDeCommande->id) }}" class="btn btn-primary btn-sm" title="Voir le Bon de Commande">Voir</a>
                                                 </td>
+
+
                                             </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            @foreach($bonsDeCommande as $bonDeCommande)
-                            <div class="modal fade" id="modifierModal{{ $bonDeCommande->id }}" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel{{ $bonDeCommande->id }}" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modifierModalLabel{{ $bonDeCommande->id }}">Modifier Bon de Commande</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="{{ route('updateBonDeCommande', $bonDeCommande->id) }}" method="POST" class="custom-form">
-                                                @csrf
-                                                @method('PUT')
-                                                <div class="form-group">
-                                                    <label for="num_bc">Bon N°</label>
-                                                    <input type="text" class="form-control" name="num_bc" value="{{ $bonDeCommande->num_bc }}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="date">Date</label>
-                                                    <input type="date" class="form-control" name="date" value="{{ $bonDeCommande->date }}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="etat">État</label>
-                                                    <input type="text" class="form-control" name="etat" value="{{ $bonDeCommande->etat }}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="lignes">DCI/Forme/Dosage</label>
-                                                    <ul class="no-bullets">
-                                                        @foreach($bonDeCommande->lignes as $ligne)
-                                                        <li>
-                                                            <input type="text" class="form-control mb-1" name="lignes[{{ $ligne->id }}][dci]" value="{{ $ligne->nomCommercial->dci->dci }}" required>
-                                                            <input type="text" class="form-control mb-1" name="lignes[{{ $ligne->id }}][forme]" value="{{ $ligne->nomCommercial->dci->forme }}" required>
-                                                            <input type="text" class="form-control mb-1" name="lignes[{{ $ligne->id }}][dosage]" value="{{ $ligne->nomCommercial->dci->dosage }}" required>
-                                                        </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="quantite_demandee">Quantité Demandée</label>
-                                                    <ul class="no-bullets">
-                                                        @foreach($bonDeCommande->lignes as $ligne)
-                                                        <li><input type="number" class="form-control mb-1" name="lignes[{{ $ligne->id }}][quantite_demandee]" value="{{ $ligne->quantite_demandee }}" required></li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="quantite_restante">Quantité Restante</label>
-                                                    <ul class="no-bullets">
-                                                        @foreach($bonDeCommande->lignes as $ligne)
-                                                        <li><input type="number" class="form-control mb-1" name="lignes[{{ $ligne->id }}][quantite_restante]" value="{{ $ligne->quantite_restante }}" required></li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
                         </div>
                     </div>
 
@@ -746,6 +685,7 @@
                         {{ session('success') }}
                     </div>
                     @endif
+
 
                     < </div>
                         <div>
