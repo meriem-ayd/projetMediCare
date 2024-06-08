@@ -15,6 +15,12 @@ class CheifPharmacistMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+// Vérifie si l'utilisateur est authentifié
+if (!Auth::check()) {
+    return redirect()->route('getAdminAuth');
+} else {
+    if (Auth::user()->chiefPharmacist) {
         return $next($request);
     }
+}    }
 }

@@ -16,4 +16,10 @@ class Doctor extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function bonCommandeServices(){
+        return $this->hasMany(BonCommandeService::class, 'id_doc');
+
+
+    }
 }

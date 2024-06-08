@@ -1,129 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/pages/tables/data-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:43:11 GMT -->
+<!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:41:54 GMT -->
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Xollo</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="../../../assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <!-- endinject -->
-  <!-- Layout styles -->
-  <link rel="stylesheet" href="css/demo_1/style.css">
-  <!-- End layout styles -->
-  <link rel="shortcut icon" href="https://demo.bootstrapdash.com/xollo/template/assets/images/favicon.ico" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MediCare</title>
+    <link rel="shortcut icon" href="/images/logooooo.ico ">
+
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="css/demo_1/style.css">
+    <!-- End layout styles -->
+    {{-- <link rel="shortcut icon" href="https://demo.bootstrapdash.com/xollo/template/assets/images/favicon.ico" /> --}}
 </head>
 
 <body>
-  <div class="container-scroller">
-    <!-- partial:../../partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="../../index.html"><img src="https://demo.bootstrapdash.com/xollo/template/assets/images/logo.svg" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="https://demo.bootstrapdash.com/xollo/template/assets/images/logo-mini.svg" alt="logo" /></a>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-stretch">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="mdi mdi-equal"></span>
-        </button>
-        <form class="form-inline d-none d-lg-block search my-auto">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search here...">
-            <div class="input-group-append">
-              <i class="mdi mdi-magnify"></i>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                {{-- <a class="navbar-brand brand-logo">MediCare</a> --}}
+                <img src="/images/logog3.png" alt="" width="90px">
+                {{-- <a class="navbar-brand brand-logo-mini" style="color: black">MediCare</a> --}}
             </div>
-          </div>
-        </form>
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown d-none d-lg-flex">
-            <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-bs-toggle="dropdown">
-
-          </li>
-          <li class="nav-item dropdown d-none d-lg-flex">
-            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-              <i class="mdi mdi-bell-outline"></i>
-              <span class="count"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-              <h6 class="p-3 mb-0 bg-white">Notifications</h6>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-success">
-                    <i class="mdi mdi-calendar"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <p class="text-small text-muted text-right mb-0">4:10 PM</p>
-                  <p class="preview-subject">Event today</p>
-                  <p class="text-muted text-small ellipsis"> Just a reminder that you have an event today </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-warning">
-                    <i class="mdi mdi-settings"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <p class="text-small text-muted text-right mb-0">4:10 PM</p>
-                  <p class="preview-subject">Settings</p>
-                  <p class="text-muted text-small ellipsis"> Update dashboard </p>
-                </div>
-              </a>
-              <h6 class="p-3 mb-0 text-center bg-white">See all notifications</h6>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-equal"></span>
+                </button>
+                <form class="form-inline d-none d-lg-block search my-auto">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Rechercher...">
+                        <div class="input-group-append">
+                            <i class="mdi mdi-magnify"></i>
+                        </div>
+                    </div>
+                </form>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item nav-item-highlight d-flex">
+                        <a class="nav-link" href="{{route('getAdminLogout')}}">
+                            <i class="mdi mdi-logout"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="mdi mdi-equal"></span>
+                </button>
             </div>
-          </li>
-          <li class="nav-item dropdown d-flex">
-            <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown">
-              <i class="mdi mdi-email-outline"></i>
-              <span class="count"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-              <h6 class="p-3 mb-0 bg-white">Messages</h6>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow">
-                  <span class="badge badge-pill badge-danger">REQUEST</span>
-                  <p class="preview-subject">Support request</p>
-                  <p class="text-small text-muted ellipsis mb-0"> Please provide support for the items in queue </p>
-                </div>
-                <p class="text-small text-muted align-self-start">4:10 PM</p>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow">
-                  <span class="badge badge-pill badge-primary">INVOICES</span>
-                  <p class="preview-subject">Invoice received</p>
-                  <p class="text-small text-muted ellipsis mb-0"> The invoice for the items have been received in your inbox </p>
-                </div>
-                <p class="text-small text-muted align-self-start">1 day ago</p>
-              </a>
-              <h6 class="p-3 mb-0 text-center bg-white">4 new messages</h6>
-            </div>
-          </li>
-          <li class="nav-item nav-settings d-none d-lg-flex">
-            <a class="nav-link" href="#">
-              <i class="mdi mdi-arrow-expand-all"></i>
-            </a>
-          </li>
-          <li class="nav-item nav-item-highlight d-flex">
-            <a class="nav-link" href="#">
-              <i class="mdi mdi-logout"></i>
-            </a>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="mdi mdi-equal"></span>
-        </button>
-      </div>
-    </nav>
+        </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:../../partials/_settings-panel.html -->
@@ -285,328 +221,109 @@
       </div>
       <!-- partial -->
       <!-- partial:../../partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+       <!-- partial:partials/_sidebar.html -->
+       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav nav-height">
-          <li class="nav-item nav-profile">
-            <span class="nav-link" href="#">
-              <div class="profile-image online">
-                <img src="../../../assets/images/faces/face20.jpg" />
-              </div>
-              <p> Donald Azin </p>
-              <p> donaldazin@xollo.com </p>
-              <div class="d-flex justify-content-center mt-4 mb-2">
-                <i class="mdi mdi-gmail me-3"></i>
-                <i class="mdi mdi-account"></i>
-              </div>
-            </span>
-          </li>
-          <li class="nav-item nav-category">
-            <span class="nav-link">Main</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../index.html">
-              <i class="mdi mdi-compass-outline menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../samples/widgets.html">
-              <i class="mdi mdi-atom menu-icon"></i>
-              <span class="menu-title">Widgets</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
-              <i class="mdi mdi-arrow-expand-all menu-icon"></i>
-              <span class="menu-title">Page Layouts</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="page-layouts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../layout/boxed-layout.html">Boxed</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../layout/rtl-layout.html">RTL</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-layouts" aria-expanded="false" aria-controls="sidebar-layouts">
-              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              <span class="menu-title">Sidebar Layouts</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="sidebar-layouts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../layout/compact-menu.html">Compact menu</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../layout/sidebar-collapsed.html">Icon menu</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../layout/sidebar-hidden.html">Sidebar Hidden</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../layout/sidebar-hidden-overlay.html">Sidebar Overlay</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../layout/sidebar-fixed.html">Sidebar Fixed</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item nav-category">
-            <span class="nav-link">UI Features</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="mdi mdi-buffer menu-icon"></i>
-              <span class="menu-title">Basic Elements</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/accordions.html">Accordions</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/badges.html">Badges</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/breadcrumbs.html">Breadcrumbs</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/modals.html">Modals</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/progress.html">Progress bar</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/pagination.html">Pagination</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/tabs.html">Tabs</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/typography.html">Typography</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/tooltips.html">Tooltips</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-advanced" aria-expanded="false" aria-controls="ui-advanced">
-              <i class="mdi mdi-view-dashboard menu-icon"></i>
-              <span class="menu-title">Advanced Elements</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-advanced">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/dragula.html">Dragula</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/clipboard.html">Clipboard</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/context-menu.html">Context menu</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/slider.html">Sliders</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/carousel.html">Carousel</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/colcade.html">Colcade</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../ui-features/loaders.html">Loaders</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../ui-features/popups.html">
-              <i class="mdi mdi-message-text-outline menu-icon"></i>
-              <span class="menu-title">Popups</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../ui-features/notifications.html">
-              <i class="mdi mdi-bell-outline menu-icon"></i>
-              <span class="menu-title">Notifications</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-              <i class="mdi mdi-emoticon-happy menu-icon"></i>
-              <span class="menu-title">Icons</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="icons">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../icons/flag-icons.html">Flag icons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../icons/font-awesome.html">Font Awesome</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../icons/simple-line-icon.html">Simple line icons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../icons/themify.html">Themify icons</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item nav-category">
-            <span class="nav-link">Forms</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="mdi mdi-clipboard-outline menu-icon"></i>
-              <span class="menu-title">Form Elements</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="../forms/basic_elements.html">Basic Elements</a></li>
-                <li class="nav-item"><a class="nav-link" href="../forms/advanced_elements.html">Advanced Elements</a></li>
-                <li class="nav-item"><a class="nav-link" href="../forms/validation.html">Validation</a></li>
-                <li class="nav-item"><a class="nav-link" href="../forms/wizard.html">Wizard</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#editors" aria-expanded="false" aria-controls="editors">
-              <i class="mdi mdi-pencil-box-outline menu-icon"></i>
-              <span class="menu-title">Editors</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="editors">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="../forms/text_editor.html">Text editors</a></li>
-                <li class="nav-item"><a class="nav-link" href="../forms/code_editor.html">Code editors</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item nav-category">
-            <span class="nav-link">Data Representation</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="mdi mdi-chart-donut menu-icon"></i>
-              <span class="menu-title">Charts</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../charts/chartjs.html">ChartJs</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../charts/morris.html">Morris</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../charts/flot-chart.html">Flot</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../charts/google-charts.html">Google charts</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../charts/sparkline.html">Sparkline js</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../charts/c3.html">C3 charts</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../charts/chartist.html">Chartists</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../charts/justGage.html">JustGage</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-              <i class="mdi mdi-table menu-icon"></i>
-              <span class="menu-title">Tables</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="tables">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="basic-table.html">Basic table</a></li>
-                <li class="nav-item"> <a class="nav-link" href="data-table.html">Data table</a></li>
-                <li class="nav-item"> <a class="nav-link" href="js-grid.html">Js-grid</a></li>
-                <li class="nav-item"> <a class="nav-link" href="sortable-table.html">Sortable table</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#maps" aria-expanded="false" aria-controls="maps">
-              <i class="mdi mdi-map-marker-outline menu-icon"></i>
-              <span class="menu-title">Maps</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="maps">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../maps/vector-map.html">Vector Map</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../maps/google-maps.html">Google Map</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item nav-category">
-            <span class="nav-link">Sample pages</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="mdi mdi-lock-outline menu-icon"></i>
-              <span class="menu-title">User Pages</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/login-2.html"> Login 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/register.html"> Register </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/register-2.html"> Register 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/lock-screen.html"> Lockscreen </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
-              <i class="mdi mdi-alert-circle-outline menu-icon"></i>
-              <span class="menu-title">Error pages</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="error">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../samples/error-404.html"> 404 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/error-500.html"> 500 </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
-              <i class="mdi mdi-send menu-icon"></i>
-              <span class="menu-title">General Pages</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="general-pages">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../samples/blank-page.html"> Blank Page </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/profile.html"> Profile </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/faq.html"> FAQ </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/faq-2.html"> FAQ 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/news-grid.html"> News grid </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/timeline.html"> Timeline </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/search-results.html"> Search Results </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/portfolio.html"> Portfolio </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#e-commerce" aria-expanded="false" aria-controls="e-commerce">
-              <i class="mdi mdi-cart-outline menu-icon"></i>
-              <span class="menu-title">E-commerce</span>
-              <i class="mdi mdi-chevron-right menu-arrow"></i>
-            </a>
-            <div class="collapse" id="e-commerce">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../samples/invoice.html"> Invoice </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/pricing-table.html"> Pricing Table </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../samples/orders.html"> Orders </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item nav-category">
-            <span class="nav-link">Apps</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../apps/email.html">
-              <i class="mdi mdi-email-open-outline menu-icon"></i>
-              <span class="menu-title">E-mail</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../apps/calendar.html">
-              <i class="mdi mdi-calendar-today menu-icon"></i>
-              <span class="menu-title">Calendar</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../apps/todo.html">
-              <i class="mdi mdi-calendar-text menu-icon"></i>
-              <span class="menu-title">Todo List</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../apps/gallery.html">
-              <i class="mdi mdi-image-filter menu-icon"></i>
-              <span class="menu-title">Gallery</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.bootstrapdash.com/demo/xollo/documentation/documentation.html">
-              <i class="mdi mdi-file-outline menu-icon"></i>
-              <span class="menu-title">Documentation</span>
-            </a>
-          </li>
+            <li class="nav-item nav-profile">
+                <span class="nav-link" href="#">
+                    <p>  Bienvenue</p>
+                    <p> {{ Auth::user()->name }} </p>
+                    <p> {{ Auth::user()->email }} </p>
+                </span>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span class="mdi mdi-view-dashboard"></span>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+
+            @if(Auth::check() && Auth::user()->admin)
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#users" aria-expanded="false" aria-controls="sidebar-layouts">
+                    <span class="mdi mdi-account-group"></span>
+                    <span class="menu-title">Gérer Utilisateurs</span>
+                    <i class="mdi mdi-chevron-right menu-arrow"></i>
+                </a>
+                <div class="collapse" id="users">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="{{route('getUsers')}}">Liste des utilisateurs</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{route('getAddUser')}}">Ajouter un utilisateur</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#med" aria-expanded="false" aria-controls="sidebar-layouts">
+                    <span class="mdi mdi-account-group"></span>
+                    <span class="menu-title">Gérer Médecins</span>
+                    <i class="mdi mdi-chevron-right menu-arrow"></i>
+                </a>
+                <div class="collapse" id="med">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="{{route('getMed')}}">Liste des médecins</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{route('getaddmedecin')}}">Ajouter un médecin</a></li>
+
+                    </ul>
+                </div>
+            </li>
+
+
+
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#services" aria-expanded="false" aria-controls="sidebar-layouts">
+                    <span class="mdi mdi-office-building"></span>
+                    <span class="menu-title">Gérer Services</span>
+                    <i class="mdi mdi-chevron-right menu-arrow"></i>
+                </a>
+                <div class="collapse" id="services">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="{{route('listeServices')}}">Liste des services</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{route('getService')}}">Ajouter Service</a></li>
+                    </ul>
+                </div>
+            </li>
+
+
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#dci" aria-expanded="false" aria-controls="sidebar-layouts">
+                    <span class="mdi mdi-pill-multiple"></span>
+                    <span class="menu-title">Gérer Médicaments</span>
+                    <i class="mdi mdi-chevron-right menu-arrow"></i>
+                </a>
+                <div class="collapse" id="dci">
+                    <ul class="nav flex-column sub-menu">
+
+                        <li class="nav-item"> <a class="nav-link" href="{{route('listeDCI')}}">Liste DCI</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{route('getDCI')}}">Ajouter DCI</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span class="mdi mdi-account"></span>
+                    <span class="menu-title">Profile</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('getAdminLogout')}}">
+                    <i class="mdi mdi-logout"></i>
+                    <span class="menu-title">Déconnexion</span>
+                </a>
+            </li>
+            @endif
+
+
         </ul>
-      </nav>
+    </nav>
+    <!-- partial -->
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="page-header">
-            <h3 class="page-title"> Data table </h3>
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data table</li>
-              </ol>
-            </nav>
-          </div>
+
           <div class="row mb-3">
             <div class="col">
               <input type="text" id="searchInput" class="form-control" placeholder="Rechercher par ID DCI">
@@ -751,12 +468,7 @@
 
 <!-- content-wrapper ends -->
 <!-- partial:../../partials/_footer.html -->
-<footer class="footer">
-  <div class="container-fluid clearfix">
-    <span class="d-block text-center text-sm-start d-sm-inline-block">Copyright © 2023 <a href="#">BootstrapDash</a>. All rights reserved.</span>
-    <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-  </div>
-</footer>
+
 <!-- partial -->
 </div>
 <!-- main-panel ends -->

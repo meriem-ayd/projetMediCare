@@ -6,6 +6,8 @@ use App\Models\ChiefPharmacist;
 use App\Models\Doctor;
 use App\Models\Pharmacist;
 use App\Models\User;
+use App\Models\Admin;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,6 +18,19 @@ class UserSeed extends Seeder
      */
     public function run(): void
     {
+
+        $userAdmin = User::create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('12345678')
+        ]);
+
+        $admin = new Admin();
+        $admin->user_id = $userAdmin->id;
+        $admin->save();
+
+
+
         $userChiefPharmacist = User::create([
             'name' => 'chief pharmacist',
             'email' => 'chief_pharmacist@gmail.com',

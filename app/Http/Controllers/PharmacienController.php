@@ -9,8 +9,24 @@ class PharmacienController extends Controller
 {
     public function bonCF(){
         return view('AjouterBCF');
+
+
     }
 
+    public function boncommandefournisseur(){
+
+        //$idPharmacien =  auth()->user()->pharmacist->first()->id;
+        //$idPharmacienChef = ChiefPharmacist->id;
+        $dcis = Dci::all();
+        return view('AjouterBCF', compact('dcis'));
+
+
+    }
+    public function listeBonsDeCommandeFournisseur(){
+        return view('listeBCF');
+
+    }
+    ////////////////////////////////////////////////////////////
     public function showBonLivraison()
     {
         return view('bonlivraison');
@@ -41,10 +57,10 @@ class PharmacienController extends Controller
         $bonDeCommande = BonCommandeService::findOrFail($id);
         return view('show', compact('bonDeCommande'));
     }
-    
 
-    
-    
-    
+
+
+
+
 
 }

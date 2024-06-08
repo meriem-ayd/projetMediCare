@@ -16,11 +16,13 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Vérifie si l'utilisateur est authentifié
-        if (!Auth::check()) {
-            return redirect()->route('getAdminAuth');
-        } else {
+       // Vérifie si l'utilisateur est authentifié
+       if (!Auth::check()) {
+        return redirect()->route('getAdminAuth');
+    } else {
+        if (Auth::user()->admin) {
             return $next($request);
         }
     }
+}
 }

@@ -14,6 +14,11 @@ class User extends Authenticatable
 
     protected $guarded = [];
 
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
     public function chiefPharmacist()
     {
         return $this->hasOne(ChiefPharmacist::class);
@@ -21,12 +26,12 @@ class User extends Authenticatable
 
     public function pharmacist()
     {
-        return $this->hasMany(Pharmacist::class);
+        return $this->hasOne(Pharmacist::class);
     }
 
     public function doctor()
     {
-        return $this->hasMany(Doctor::class);
+        return $this->hasOne(Doctor::class);
     }
 
     /**

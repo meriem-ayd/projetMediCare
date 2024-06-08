@@ -7,7 +7,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Xollo</title>
+    <title>MediCare</title>
+    <link rel="shortcut icon" href="/images/logooooo.ico ">
+
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -20,7 +22,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="css/demo_1/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="https://demo.bootstrapdash.com/xollo/template/assets/images/favicon.ico" />
+    {{-- <link rel="shortcut icon" href="https://demo.bootstrapdash.com/xollo/template/assets/images/favicon.ico" /> --}}
 </head>
 
 <body>
@@ -31,8 +33,8 @@
                     <div class="row w-100">
                         <div class="col-lg-4 mx-auto">
                             <div class="auth-form-dark text-left p-5">
-                                <h2>Login</h2>
-                                <h4 class="font-weight-light">Hello! let's get started</h4>
+                                <h2 style="margin-left: 20%">Authentification</h2>
+                                <h4 class="font-weight-light"></h4>
                                 @if(session('error'))
                                 <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
                                     {{ session('error') }}
@@ -62,11 +64,11 @@
                                         @endif
                                     </div>
                                     <div class="mt-5">
-                                        <button type="submit" class="btn btn-block btn-secondary btn-lg font-weight-medium">Login</button>
+                                        <button type="submit" class="btn btn-block btn-secondary btn-lg font-weight-medium " style="background-color: #52d1b7">Se Connecter</button>
                                     </div>
-                                    <div class="mt-3 text-center">
+                                    {{-- <div class="mt-3 text-center">
                                         <a href="#" class="auth-link text-white">Forgot password?</a>
-                                    </div>
+                                    </div> --}}
                                 </form>
                             </div>
                         </div>

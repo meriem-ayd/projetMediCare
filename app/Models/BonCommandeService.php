@@ -14,7 +14,7 @@ class BonCommandeService extends Model
     protected $fillable = [
         'id_phar',
         'id_doc',
-        'id_service',
+        'service_id',
         'num_bc',
         'date',
         'etat',
@@ -32,7 +32,7 @@ class BonCommandeService extends Model
 
     public function service()
     {
-        return $this->belongsTo(Service::class, 'id_service');
+        return $this->belongsTo(Service::class, 'service_id');
     }
 
     public function lignes()

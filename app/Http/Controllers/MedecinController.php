@@ -25,7 +25,7 @@ class MedecinController extends Controller
         // Récupérer l'ID du premier pharmacien
         $idPharmacien = Pharmacist::first()->id;
         // Récupérer l'ID et le nom du premier médecin associé à l'utilisateur authentifié
-        $medecin = auth()->user()->doctor->first();
+        $medecin = auth()->user()->doctor;
         $idMedecin = $medecin->id;
         $nomMedecin = auth()->user()->name; // Supposant que le nom de l'utilisateur est stocké dans le champ 'name'
 
@@ -38,7 +38,7 @@ class MedecinController extends Controller
         $validatedData = $request->validate([
             'id_phar' => 'required|integer',
             'id_doc' => 'required|integer',
-            'id_service' => 'required|integer',
+            'service_id' => 'required|integer',
             'num_bc' => 'required|integer',
             'date' => 'required|date',
             'etat' => 'required|string',
@@ -53,7 +53,7 @@ class MedecinController extends Controller
         $bonCommandeService = BonCommandeService::create([
             'id_phar' => $validatedData['id_phar'],
             'id_doc' => $validatedData['id_doc'],
-            'id_service' => $validatedData['id_service'],
+            'service_id' => $validatedData['service_id'],
             'num_bc' => $validatedData['num_bc'],
             'date' => $validatedData['date'],
             'etat' => $validatedData['etat'],
@@ -70,13 +70,22 @@ class MedecinController extends Controller
 
     public function listeBonsDeCommandeMedecin()
     {
+    // // Récupérer l'utilisateur authentifié
+    // $user = auth()->user();
+
+    // // Vérifier si l'utilisateur est un médecin
+    // if ($user && $user->doctor) {
+    //     // Récupérer l'ID du médecin
+    //     $idMedecin = $user->doctor->id;
+
         // Récupérer l'utilisateur authentifié
         $user = auth()->user();
 
         // Vérifier si l'utilisateur est un médecin
         if ($user->doctor) {
             // Récupérer l'ID du médecin
-            $idMedecin = $user->doctor->first()->id;
+            $idMedecin = $user->doctor->id;
+
             // Récupérer les bons de commande du médecin avec les lignes et les informations des DCI
             $bonsDeCommande = BonCommandeService::where('id_doc', $idMedecin)
                 ->with('lignes.nomCommercial.dci','medecin.user')
@@ -119,7 +128,7 @@ class MedecinController extends Controller
 
         return redirect()->back()->with('success', 'Bon de Commande mis à jour avec succès');
     }
-    // ordonnance 
+    // ordonnance
     public function create()
     {
         $services = Service::all();

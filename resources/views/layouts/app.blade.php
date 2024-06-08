@@ -1,55 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:41:54 GMT -->
-
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Xollo</title>
-    <!-- plugins:css -->
+    <title>MediCare</title>
     <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
     <link rel="stylesheet" href="css/demo_1/style.css">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="https://demo.bootstrapdash.com/xollo/template/assets/images/favicon.ico" />
-</head>
+    <link rel="shortcut icon" href="/images/logooooo.ico ">
 
+    {{-- <link rel="shortcut icon" href="https://demo.bootstrapdash.com/xollo/template/assets/images/favicon.ico" /> --}}
+</head>
 <body>
     <div class="container-scroller">
-        <div class="row p-0 m-0 proBanner" id="proBanner">
-            <div class="col-md-12 p-0 m-0">
-                <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-                    <div class="ps-lg-1">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
-                            <a href="https://www.bootstrapdash.com/product/xollo-bootstrap-admin-template/" target="_blank" class="btn me-2 buy-now-btn border-0">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <a href="https://www.bootstrapdash.com/product/xollo-bootstrap-admin-template/"><i class="mdi mdi-home me-3 text-white"></i></a>
-                        <button id="bannerClose" class="btn border-0 p-0">
-                            <i class="mdi mdi-close text-white me-0"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="https://demo.bootstrapdash.com/xollo/template/assets/images/logo.svg" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="https://demo.bootstrapdash.com/xollo/template/assets/images/logo-mini.svg" alt="logo" /></a>
+                {{-- <a class="navbar-brand brand-logo">MediCare</a> --}}
+                <img src="/images/logog3.png" alt="" width="90px">
+                {{-- <a class="navbar-brand brand-logo-mini" style="color: black">MediCare</a> --}}
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -57,90 +29,15 @@
                 </button>
                 <form class="form-inline d-none d-lg-block search my-auto">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search here...">
+                        <input type="text" class="form-control" placeholder="Rechercher...">
                         <div class="input-group-append">
                             <i class="mdi mdi-magnify"></i>
                         </div>
                     </div>
                 </form>
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown d-none d-lg-flex">
-                        <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-bs-toggle="dropdown">
-                            <i class="mdi mdi-earth me-2"></i> English </a>
-                        <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
-                            <a class="dropdown-item" href="#"> French </a>
-                            <a class="dropdown-item" href="#"> Spain </a>
-                            <a class="dropdown-item" href="#"> Latin </a>
-                            <a class="dropdown-item" href="#"> Japanese </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown d-none d-lg-flex">
-                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-                            <i class="mdi mdi-bell-outline"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                            <h6 class="p-3 mb-0 bg-white">Notifications</h6>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-success">
-                                        <i class="mdi mdi-calendar"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="text-small text-muted text-right mb-0">4:10 PM</p>
-                                    <p class="preview-subject">Event today</p>
-                                    <p class="text-muted text-small ellipsis"> Just a reminder that you have an event today </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-warning">
-                                        <i class="mdi mdi-settings"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="text-small text-muted text-right mb-0">4:10 PM</p>
-                                    <p class="preview-subject">Settings</p>
-                                    <p class="text-muted text-small ellipsis"> Update dashboard </p>
-                                </div>
-                            </a>
-                            <h6 class="p-3 mb-0 text-center bg-white">See all notifications</h6>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown d-flex">
-                        <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown">
-                            <i class="mdi mdi-email-outline"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                            <h6 class="p-3 mb-0 bg-white">Messages</h6>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-item-content flex-grow">
-                                    <span class="badge badge-pill badge-danger">REQUEST</span>
-                                    <p class="preview-subject">Support request</p>
-                                    <p class="text-small text-muted ellipsis mb-0"> Please provide support for the items in queue </p>
-                                </div>
-                                <p class="text-small text-muted align-self-start">4:10 PM</p>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-item-content flex-grow">
-                                    <span class="badge badge-pill badge-primary">INVOICES</span>
-                                    <p class="preview-subject">Invoice received</p>
-                                    <p class="text-small text-muted ellipsis mb-0"> The invoice for the items have been received in your inbox </p>
-                                </div>
-                                <p class="text-small text-muted align-self-start">1 day ago</p>
-                            </a>
-                            <h6 class="p-3 mb-0 text-center bg-white">4 new messages</h6>
-                        </div>
-                    </li>
-                    <li class="nav-item nav-settings d-none d-lg-flex">
-                        <a class="nav-link" href="#">
-                            <i class="mdi mdi-arrow-expand-all"></i>
-                        </a>
-                    </li>
                     <li class="nav-item nav-item-highlight d-flex">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route('getAdminLogout')}}">
                             <i class="mdi mdi-logout"></i>
                         </a>
                     </li>
@@ -158,16 +55,7 @@
                 <div id="theme-settings" class="settings-panel">
                     <i class="settings-close mdi mdi-close"></i>
                     <p class="settings-heading mt-2">HEADER SKINS</p>
-                    <div class="color-tiles mx-0 px-4">
-                        <div class="tiles primary"></div>
-                        <div class="tiles success"></div>
-                        <div class="tiles warning"></div>
-                        <div class="tiles danger"></div>
-                        <div class="tiles pink"></div>
-                        <div class="tiles info"></div>
-                        <div class="tiles light"></div>
-                        <div class="tiles default"></div>
-                    </div>
+
                 </div>
             </div>
             <div id="right-sidebar" class="settings-panel">
@@ -315,77 +203,187 @@
                 <ul class="nav nav-height">
                     <li class="nav-item nav-profile">
                         <span class="nav-link" href="#">
-                            <div class="profile-image online">
-                                <img src="images/faces/face20.jpg" />
-                            </div>
-                            <p> {{ Auth::user()->name }} </p>
+                            <p>  Bienvenue {{ Auth::user()->name }} </p>
+
                             <p> {{ Auth::user()->email }} </p>
-                            <div class="d-flex justify-content-center mt-4 mb-2">
-                                <i class="mdi mdi-gmail me-3"></i>
-                                <i class="mdi mdi-account"></i>
-                            </div>
+
                         </span>
                     </li>
-                    <li class="nav-item nav-category">
-                        <span class="nav-link">Main</span>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('acceuil')}}">
+                            <span class="mdi mdi-home"></span>
+                            <span class="menu-title">Accueil</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="mdi mdi-compass-outline menu-icon"></i>
+                        <a class="nav-link">
+                            <span class="mdi mdi-view-dashboard"></span>
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
 
-                    @if(Auth::check() && Auth::user()->chiefPharmacist()->exists())
+
+
+                    @if(Auth::check() && Auth::user()->admin)
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('getUsers') }}">
-                            <i class="la la-users menu-icon"></i>
-                            <span class="menu-title">Utilisateurs</span>
+                        <a class="nav-link" data-bs-toggle="collapse" href="#users" aria-expanded="false" aria-controls="sidebar-layouts">
+                            <span class="mdi mdi-account-group"></span>
+                            <span class="menu-title">Gérer Utilisateurs</span>
+                            <i class="mdi mdi-chevron-right menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="users">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="{{route('getUsers')}}">Liste des utilisateurs</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('getAddUser')}}">Ajouter un utilisateur</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#med" aria-expanded="false" aria-controls="sidebar-layouts">
+                            <span class="mdi mdi-account-group"></span>
+                            <span class="menu-title">Gérer Médecins</span>
+                            <i class="mdi mdi-chevron-right menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="med">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="{{route('getMed')}}">Liste des médecins</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('getaddmedecin')}}">Ajouter un médecin</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#services" aria-expanded="false" aria-controls="sidebar-layouts">
+                            <span class="mdi mdi-office-building"></span>
+                            <span class="menu-title">Gérer Services</span>
+                            <i class="mdi mdi-chevron-right menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="services">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="{{route('listeServices')}}">Liste des services</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('getService')}}">Ajouter Service</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#dci" aria-expanded="false" aria-controls="sidebar-layouts">
+                            <span class="mdi mdi-pill-multiple"></span>
+                            <span class="menu-title">Gérer Médicaments</span>
+                            <i class="mdi mdi-chevron-right menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="dci">
+                            <ul class="nav flex-column sub-menu">
+
+                                <li class="nav-item"> <a class="nav-link" href="{{route('listeDCI')}}">Liste DCI</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('getDCI')}}">Ajouter DCI</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <span class="mdi mdi-account"></span>
+                            <span class="menu-title">Profile</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('liste_dci')}}">
-                            <i class="mdi mdi-atom menu-icon"></i>
-                            <span class="menu-title">Liste DCI</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('getDCI')}}">
-                            <i class="mdi mdi-atom menu-icon"></i>
-                            <span class="menu-title">Ajouter DCI</span>
+                        <a class="nav-link" href="{{route('getAdminLogout')}}">
+                            <i class="mdi mdi-logout"></i>
+                            <span class="menu-title">Déconnexion</span>
                         </a>
                     </li>
                     @endif
 
+
                     @if(Auth::check() && Auth::user()->pharmacist()->exists())
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('bonCF') }}">
-                            Ajouter un Bon de commande Fournisseur
+                        <a class="nav-link" href="{{route('pharmacien.listeBonsDeCommande')}}">
+                            <i class="mdi mdi-file"></i>
+                            <span class="menu-title">consulter les commandes</span>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('bonlivraison.show') }}">
                             Bon de Livraison service
                         </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('pharmacien.listeBonsDeCommande') }}">
-                            liste bons de commande
+                        <a class="nav-link" data-bs-toggle="collapse" href="#bcf" aria-expanded="false" aria-controls="sidebar-layouts">
+                            <span class="mdi mdi-file"></span>
+                            <span class="menu-title"> Bons de Commande</span>
+                            <i class="mdi mdi-chevron-right menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="bcf">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="{{route('listeBonsDeCommandeFournisseur')}}"> <span class="mdi mdi-list-box">Liste des Bons</span></a></li>
+
+                                <li class="nav-item"> <a class="nav-link" href="{{route('bonCF')}}"> <span class="mdi mdi-note-plus">nouveau Bon</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#br" aria-expanded="false" aria-controls="sidebar-layouts">
+                            <span class="mdi mdi-file"></span>
+                            <span class="menu-title"> Bons de Réception</span>
+                            <i class="mdi mdi-chevron-right menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="br">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href=""> <span class="mdi mdi-list-box">Liste des Bons</span></a></li>
+
+                                <li class="nav-item"> <a class="nav-link" href=""> <span class="mdi mdi-note-plus">nouveau Bon</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#bl" aria-expanded="false" aria-controls="sidebar-layouts">
+                            <span class="mdi mdi-file"></span>
+                            <span class="menu-title"> Bons de Livraison</span>
+                            <i class="mdi mdi-chevron-right menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="bl">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href=""> <span class="mdi mdi-list-box">Liste des Bons</span></a></li>
+
+                                <li class="nav-item"> <a class="nav-link" href=""> <span class="mdi mdi-note-plus">nouveau Bon</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('getAdminLogout')}}">
+                            <i class="mdi mdi-logout"></i>
+                            <span class="menu-title">Déconnexion</span>
                         </a>
                     </li>
-                    
-
                     @endif
 
                     @if(Auth::check() && Auth::user()->doctor()->exists())
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('bondecommande') }}">
-                            Bon de commande
+                            Etablir Bon de commande
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('bons-de-commande.medecin') }}">
-                            Liste des bons de commande
+                            Mes bons de commande
                         </a>
                     </li>
                     <li class="nav-item">
@@ -393,24 +391,55 @@
                             Prescrire une ordonnance
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('getAdminLogout')}}">
+                            <i class="mdi mdi-logout"></i>
+                            <span class="menu-title">Déconnexion</span>
+                        </a>
+                    </li>
                     @endif
+
+
                 </ul>
             </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
 
+                    <div class="row">
+                        <div class="col-xl-6 grid-margin stretch-card">
+                            <!--activities card-->
 
+                            <!--activities card ends-->
+                        </div>
+                        <div class="col-xl-6 grid-margin d-flex flex-column justify-content-stretch">
+                            <!--statistics cards-->
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                {{-- <footer class="footer">
+                    <div class="container-fluid clearfix">
+                        <span class="d-block text-center text-sm-start d-sm-inline-block">Copyright © 2023 <a href="#">BootstrapDash</a>. All rights reserved.</span>
+                        <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+                    </div>
+                </footer> --}}
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
         </div>
-        <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
+        <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="vendors/chart.js/Chart.min.js"></script>
     <script src="vendors/jquery-circle-progress/js/circle-progress.min.js"></script>
     <script src="vendors/jquery-sparkline/jquery.sparkline.min.js"></script>
@@ -430,7 +459,4 @@
     <script src="js/dashboard.js"></script>
     <!-- End custom js for this page -->
 </body>
-
-<!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:42:19 GMT -->
-
 </html>

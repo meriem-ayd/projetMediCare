@@ -65,10 +65,14 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'adminMiddleware' => \App\Http\Middleware\AdminMiddleware::class,
-       
+        'doctorMiddleware' => \App\Http\Middleware\DoctorMiddleware::class,
+        'pharmacistMiddleware' => \App\Http\Middleware\PharmacistMiddleware::class,
+        'chiefPharmacistMiddleware' => \App\Http\Middleware\PharmacistMiddleware::class,
+        'userMiddleware' => \App\Http\Middleware\UserMiddleware::class,
+
     ];
     protected $routeMiddleware = [
-       
+
         'doctor' => \App\Http\Middleware\DoctorMiddleware::class,
         'pharmacist' => \App\Http\Middleware\PharmacistMiddleware::class,
 
