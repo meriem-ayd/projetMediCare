@@ -47,15 +47,18 @@
                     </div>
                 </form>
                 <ul class="navbar-nav navbar-nav-right">
+                    <ul class="navbar-nav navbar-nav-right">
+                        <li class="nav-item nav-item-highlight d-flex">
+                            <a class="nav-link" href="{{route('getAdminLogout')}}">
+                                <i class="mdi mdi-logout"></i>
+                            </a>
+                        </li>
+                    </ul>
 
 
 
 
-                    <li class="nav-item nav-item-highlight d-flex">
-                        <a class="nav-link" href="#">
-                            <i class="mdi mdi-logout"></i>
-                        </a>
-                    </li>
+                   
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                     <span class="mdi mdi-equal"></span>
@@ -326,8 +329,9 @@ echo 'Médecin';
 ?>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-outline-primary">View</button>
-                                                </td>
+                                                    <button  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifierModal{{ $user->id }}"  title="Modifier {{ $user->id}}">Modifier</button>
+                                                    <button class="btn btn-danger btn-sm" data-id="{{ $user->id }}" data-name="{{ $user->id }}" onclick="showDeleteModal({{ $user->id }})">Supprimer</button>
+                                                        </td>
                                             </tr>
                                             @endforeach
                                         </tbody>

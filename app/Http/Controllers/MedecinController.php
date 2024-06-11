@@ -30,7 +30,7 @@ class MedecinController extends Controller
         $nomMedecin = auth()->user()->name; // Supposant que le nom de l'utilisateur est stocké dans le champ 'name'
 
         $idCommerc = $nomsCommerciaux->first()->id_commerc; // Choisir le premier nom commercial comme valeur par défaut, par exemple
-
+        
         return view('bondecommande', compact('dcis', 'nomsCommerciaux', 'services', 'idPharmacien', 'idMedecin', 'idCommerc', 'nomMedecin'));
     }
     public function storeBonDeCommande(Request $request)

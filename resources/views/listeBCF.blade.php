@@ -414,7 +414,42 @@
                                                 <th>DCI/Forme/Dosage</th>
                                                 <th>Quantité Demandée</th>
                                                 <th>Quantité Restante</th>
-                                               
+
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
+                                        <tbody>
+
+                                            @foreach($bonsCommande as $bon)
+
+                                                <tr id="row{{ $bon->id }}">
+                                                <td>{{ $bon->num_bcf }}</td>
+                                                <td>{{ $bon->date }}</td>
+                                                <td>
+                                                <ul class="no-bullets">
+                                                @foreach ($bon->lignesBCF as $ligne)
+                                                <li>{{ $ligne->dci->IDdci }}-{{ $ligne->dci->forme }}-{{ $ligne->dci->dosage }}</li>
+                                                 @endforeach
+                                                </ul>
+                                                </td>
+                                                <td>
+                                                    <ul class="no-bullets">
+                                                        @foreach($bon->lignesBCF as $ligne)
+                                                        <li>{{ $ligne->quantite_commandee }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <ul class="no-bullets">
+                                                        @foreach($bon->lignesBCF as $ligne)
+                                                        <li>{{ $ligne->quantite_restante }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </td>
+
+                                                <td>
+                                                    <a href="{{route('details')}}" class="btn btn-primary">Détails</a>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>

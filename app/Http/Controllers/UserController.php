@@ -127,4 +127,40 @@ class UserController extends Controller
         return redirect()->route('getaddmedecin')->with('success', 'Votre ajout a été effectuée avec succès.');
     }
 
+    public function updateMED(Request $request, $id)
+    {
+    // Validez les données du formulaire
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users|max:255',
+        'telephone'=> 'required|string|max:255',
+        'speciality'=>'required|string|max:255',
+        'service'=>'required|string|max:255'
+
+    ]);
+
+    // Trouvez le service par son ID et mettez à jour les données
+$doctor = Doctor::findOrFail($id);
+$doctor->id = $validatedData['id'];
+$doctor->user->name = $validatedData['name'];
+$doctor->user->email = $validatedData['email'];
+$doctor->telephone = $validatedData['telephone'];
+$doctor->speciality = $validatedData['speciality'];
+$doctor->service = $validatedData['service'];
+
+//   // Sauvegarder les modifications
+//     $doctor->save();
+//     $doctor->user->save();
+    $doctor = Doctor::findOrFail($id);
+    $doctor->update($validatedData);
+
+     // Mettre à jour le service
+  // $service->update($validated);
+
+   return redirect()->route('getMed', $id)->with('success', 'Le service a été mis à jour avec succès.');
+
+
+   }
+
+
 }

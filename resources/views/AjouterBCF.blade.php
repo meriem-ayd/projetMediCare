@@ -230,7 +230,7 @@
             </li>
             @endif
 
-            @if(Auth::check() && Auth::user()->pharmacist())
+            @if(Auth::check() && Auth::user()->pharmacist() )
 
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#bcf" aria-expanded="false" aria-controls="sidebar-layouts">
@@ -330,17 +330,17 @@
                         @endif
                         <form action="{{route('bonCF')}}" method="POST">
                             @csrf
-   <input type="hidden" id="id_pharmacien" name="id_pharmacien" value="{{ auth()->user()->id  }}">
- <input type="hidden" id="id_chef_pharmacien" name="id_chef_pharmacien" value="{{ auth()->user()->id}}">
+   <input type="text" id="id_pharmacien" name="id_pharmacien" value="{{ $idPhar }}">
+ //<input type="text" id="id_chef_pharmacien" name="id_chef_pharmacien" value="{{ $idChefPharmacien}}">
 
 
 
                             <div class="row">
                             <div class="col-sm-6 text-left">
                             <div class="form-group row">
-                                <label for="num_bc" class="col-sm-3 col-form-label">Numéro de Bon de Commande:</label>
+                                <label for="num_bcf" class="col-sm-3 col-form-label">Numéro de Bon de Commande:</label>
                                 <div class="col-sm-6">
-                                    <input type="number" class="form-control" id="num_bc" name="num_bc" title="Numéro de Bon de Commande" value="{{ old('num_bc') }}" required>
+                                    <input type="number" class="form-control" id="num_bcf" name="num_bcf" title="Numéro de Bon de Commande" value="{{ old('num_bcf') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -355,44 +355,65 @@
                         </div>
 </div>
 
-<div class="row">
+<div class="form-group row">
+    <div class="col-md-4">
+      <label for="nom_service_contractant" class="col-form-label">Nom du service contractant</label>
+      <input type="text" class="form-control" id="nom_service_contractant" name="nom_service_contractant" placeholder="">
+    </div>
+    <div class="col-md-4">
+      <label for="nom_fournisseur" class="col-form-label">Nom Fournisseur:</label>
+      <input type="text" class="form-control" id="nom_fournisseur" name="nom_fournisseur" placeholder="">
+    </div>
+    <div class="col-md-4">
+      <label for="email_fournisseur" class="col-form-label">Email Fournisseur:</label>
+      <input type="text" class="form-control" id="email_fournisseur" name="email_fournisseur" placeholder="">
+    </div>
+  </div>
+
+{{-- <div class="row">
     <div class="col-sm-6 text-left">
     <div class="form-group row">
-        <label for="nom" class="col-sm-3 col-form-label">Nom du service contractant:</label>
+        <label for="nom_service_contractant" class="col-sm-3 col-form-label">Nom du service contractant:</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="nom" name="nom" title="Numéro de Bon de Commande" value="{{ old('num_bc') }}" required>
+            <input type="text" class="form-control" id="nom_service_contractant" name="nom_service_contractant" title="Nom du service contractant:" value="{{ old('') }}" required>
         </div>
     </div>
 </div>
 <div class="col-sm-6 text-right">
     <div class="form-group row justify-content-end">
     <div class="form-group row">
-        <label for="nf" class="col-sm-3 col-form-label">Nom Fournisseur:</label>
+        <label for="nom_fournisseur" class="col-sm-3 col-form-label">Nom Fournisseur:</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="nf" name="nom" title="nom du fournisseur" value="{{ old('date') }}" required>
+            <input type="text" class="form-control" id="nom_fournisseur" name="nom_fournisseur" title="nom du fournisseur" value="{{ old('nom_fournisseur') }}" required>
+        </div>
+    </div>
+      <div class="form-group row">
+         <label for="email_fournisseur" class="col-sm-3 col-form-label">Email Fournisseur:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="email_fournisseur" name="email_fournisseur" title="email du fournisseur" value="{{ old('email_fournisseur') }}" required>
         </div>
     </div>
 </div>
-</div>
+</div> --}}
 
 <div id="lignes-container" class="form-group ligne-bon">
-    {{-- <input type="hidden" name="lignes[0][id_commerc]" value="{{ $idCommerc }}"> --}}
+     <input type="text" name="lignes[0][IDdci]" value="{{ $dcis }}">
     <div class="row">
         <div class="col-sm-3">
-            <label for="id_dci" class="col-form-label">DCI:</label>
-             {{-- <select class="form-control" name="lignes[0][id_dci]" title="DCI" required>
+            <label for="IDdci" class="col-form-label">DCI:</label>
+              <select class="form-control" name="lignesBCF[0][IDdci]" title="DCI" required>
                 @foreach($dcis as $dci)
                 <option value="{{ $dci->IDdci }}">{{ $dci->dci }} - {{ $dci->forme }} - {{ $dci->dosage }}</option>
                 @endforeach
-            </select> --}}
+            </select>
         </div>
         <div class="col-sm-3">
-            <label for="quantite_demandee" class="col-form-label">Quantité Demandée:</label>
-            <input type="number" class="form-control" name="lignes[0][quantite_demandee]" required>
+            <label for="quantite_commandee" class="col-form-label">Quantité Demandée:</label>
+            <input type="number" class="form-control" name="lignesBCF[0][quantite_commandee]" required>
         </div>
         <div class="col-sm-3">
             <label for="quantite_restante" class="col-form-label">Quantité Restante:</label>
-            <input type="number" class="form-control" name="lignes[0][quantite_restante]" required>
+            <input type="number" class="form-control" name="lignesBCF[0][quantite_restante]" required>
         </div>
         <div class="col-sm-3">
             <span class="text-danger croix" onclick="supprimerLigne(this)">✖</span>
@@ -417,6 +438,50 @@
 </div>
 </div>
 </div>
+<script>
+    function ajouterLigne() {
+        var index = document.querySelectorAll('.ligne-bon .row').length;
+        var container = document.getElementById('lignes-container');
+        var newRow = `
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="IDdci" class="col-form-label">DCI:</label>
+                    <select class="form-control" name="lignes[${index}][IDdci]" required>
+                        @foreach($dcis as $dci)
+                        <option value="{{ $dci->IDdci }}">{{ $dci->dci }} - {{ $dci->forme }} - {{ $dci->dosage }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <label for="quantite_demandee" class="col-form-label">Quantité Demandée:</label>
+                    <input type="number" class="form-control" name="lignes[${index}][quantite_demandee]" required>
+                </div>
+                <div class="col-sm-3">
+                    <label for="quantite_restante" class="col-form-label">Quantité Restante:</label>
+                    <input type="number" class="form-control" name="lignes[${index}][quantite_restante]">
+                </div>
+                <div class="col-sm-3">
+                    <span class="text-danger croix" onclick="supprimerLigne(this)">✖</span>
+                </div>
+            </div>`;
+        container.insertAdjacentHTML('beforeend', newRow);
+    }
+
+    function supprimerLigne(element) {
+        element.closest('.row').remove();
+    }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
     <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->

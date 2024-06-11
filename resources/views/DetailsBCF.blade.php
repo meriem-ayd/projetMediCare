@@ -406,60 +406,117 @@
 
                 </ul>
             </nav>
-            <!-- partial -->
-            <div class="main-panel">
-                <div class="content-wrapper">
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
 
-                    <div class="row">
-                        <div class="col-xl-6 grid-margin stretch-card">
-                            <!--activities card-->
-
-                            <!--activities card ends-->
-                        </div>
-                        <div class="col-xl-6 grid-margin d-flex flex-column justify-content-stretch">
-                            <!--statistics cards-->
-
-                                </div>
-                            </div>
-                        </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card px-2">
+                  <div class="card-body">
+                    <div class="container-fluid">
+                      <h3 class="text-right my-5">Bon de commande numero</h3>
+                      <hr>
                     </div>
+
+                    <div class="container-fluid d-flex justify-content-between">
+                      <div class="col-lg-3 ps-0">
+                        <p class="mt-5 mb-2"><b>Dénomination:CHU BEJAIA</b></p>
+                        <p><br>Adresse :Béjaia<br>Téléphone et fax:</p>
+                        <p> Date </p>
+
+                      </div>
+                      <div class="col-lg-3 pr-0">
+                        <p class="mt-5 mb-2 text-right"><b>Nom et Prénom:Pharmacie Centrale Des Hopitaux </b></p>
+                        <p class="text-right"> Annexe:Annexe Alger<br>Adresse de l'annexe:Route de wilaya,Oued Smar<br> Dar el Beida, Alger</p>
+                      </div>
+                    </div>
+
+                    <div class="container-fluid mt-5 d-flex justify-content-center w-100">
+                      <div class="table-responsive w-100">
+                        <table class="table">
+                          <thead>
+                            <tr class="bg-dark text-white">
+                              <th>#</th>
+                              <th>Description</th>
+                              <th class="text-right">Quantity</th>
+                              <th class="text-right">Unit cost</th>
+                              <th class="text-right">Total</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="text-right">
+                              <td class="text-left">1</td>
+                              <td class="text-left">Brochure Design</td>
+                              <td>2</td>
+                              <td>$20</td>
+                              <td>$40</td>
+                            </tr>
+                            <tr class="text-right">
+                              <td class="text-left">2</td>
+                              <td class="text-left">Web Design Packages(Template) - Basic</td>
+                              <td>05</td>
+                              <td>$25</td>
+                              <td>$125</td>
+                            </tr>
+                            <tr class="text-right">
+                              <td class="text-left">3</td>
+                              <td class="text-left">Print Ad - Basic - Color</td>
+                              <td>08</td>
+                              <td>$500</td>
+                              <td>$4000</td>
+                            </tr>
+                            <tr class="text-right">
+                              <td class="text-left">4</td>
+                              <td class="text-left">Down Coat</td>
+                              <td>1</td>
+                              <td>$5</td>
+                              <td>$5</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="container-fluid mt-5 w-100">
+                      <p class="text-right mb-2">Sub - Total amount: $12,348</p>
+                      <p class="text-right">vat (10%) : $138</p>
+                      <h4 class="text-right mb-5">Total : $13,986</h4>
+                      <hr>
+                    </div>
+                    <div class="container-fluid w-100">
+                      <a href="#" class="btn btn-primary float-right mt-4 ms-2"><i class="mdi mdi-printer me-1"></i>Print</a>
+                      <a href="#" class="btn btn-success float-right mt-4"><i class="mdi mdi-telegram me-1"></i>Send Invoice</a>
+                    </div>
+                  </div>
                 </div>
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
-                {{-- <footer class="footer">
-                    <div class="container-fluid clearfix">
-                        <span class="d-block text-center text-sm-start d-sm-inline-block">Copyright © 2023 <a href="#">BootstrapDash</a>. All rights reserved.</span>
-                        <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-                    </div>
-                </footer> --}}
-                <!-- partial -->
+              </div>
             </div>
-            <!-- main-panel ends -->
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+         
+          <!-- partial -->
         </div>
-        <!-- page-body-wrapper ends -->
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="vendors/chart.js/Chart.min.js"></script>
-    <script src="vendors/jquery-circle-progress/js/circle-progress.min.js"></script>
-    <script src="vendors/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <script src="vendors/flot/jquery.flot.js"></script>
-    <script src="vendors/flot/jquery.flot.resize.js"></script>
-    <script src="vendors/flot/curvedLines.js"></script>
-    <script src="js/jquery.cookie.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="js/off-canvas.js"></script>
-    <script src="js/hoverable-collapse.js"></script>
-    <script src="js/misc.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/todolist.js"></script>
+    <script src="../../../assets/js/off-canvas.js"></script>
+    <script src="../../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../../assets/js/misc.js"></script>
+    <script src="../../../assets/js/settings.js"></script>
+    <script src="../../../assets/js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="js/dashboard.js"></script>
     <!-- End custom js for this page -->
-</body>
+  </body>
+
+<!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/pages/samples/invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:43:18 GMT -->
 </html>

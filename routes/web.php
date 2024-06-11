@@ -30,6 +30,8 @@ Route::middleware(['userMiddleware'])->group(function () {
 
 
         Route::get('/medecins', '\App\Http\Controllers\UserController@getMed')->name('getMed');
+        Route::put('/medecins/{id}','\App\Http\Controllers\UserController@updateMED')->name('updateMED');
+
         Route::get('/addmedecin', '\App\Http\Controllers\UserController@getaddmedecin')->name('getaddmedecin');
         Route::post('/addmedecin', '\App\Http\Controllers\UserController@postAddMed')->name('postAddMed');
 
@@ -64,12 +66,22 @@ Route::middleware(['userMiddleware'])->group(function () {
 
     Route::middleware(['pharmacist'])->group(function () {
         Route::get('/AjouterBCF', [PharmacienController::class, 'bonCF'])->name('bonCF');
-        Route::get('/listeBCF',[PharmacienController::class,'listeBonsDeCommandeFournisseur' ])->name('listeBonsDeCommandeFournisseur');
+        Route::post('/AjouterBCF',[PharmacienController::class,'createBonCommandeFournisseur'])->name('createBonCommandeFournisseur');
 
+        Route::get('/listeBCF',[PharmacienController::class,'listeBonsDeCommandeFournisseur' ])->name('listeBonsDeCommandeFournisseur');
+        Route::get('/DetailsBCF',[PharmacienController::class,'details' ])->name('details');
+
+       // Route::post('/creer-bon-cf', [PharmacienController::class, 'createBonCommandeFournisseur'])->name('creerBonCF');
 
         Route::get('/bonlivraison', [PharmacienController::class, 'showBonLivraison'])->name('bonlivraison.show');
         Route::get('/liste-bons-de-commande', [PharmacienController::class, 'listeTousBonsDeCommande'])->name('pharmacien.listeBonsDeCommande');
         Route::get('/bondecommande/{id}', [PharmacienController::class, 'showBonDeCommande'])->name('bondecommande.show');
 
     });
+    // Route::middleware(['chiefPharmacistMiddleware'])->group(function () {
+    //     Route::get('/AjouterBCF', [PharmacienController::class, 'bonCF'])->name('bonCF');
+    //     Route::post('/AjouterBCF',[PharmacienController::class,'createBonCommandeFournisseur'])->name('createBonCommandeFournisseur');
+
+
+    // });
 });

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('nom_fournisseur');
             $table->string('nom_service_contractant');
-            $table->string('email_fournisseur')->unique();
+            $table->string('email_fournisseur');
             $table->foreign('id_chef_pharmacien')->references('id')->on('chief_pharmacists');
             $table->foreign('id_pharmacien')->references('id')->on('pharmacists');
             $table->timestamps();

@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use Symfony\Component\HttpFoundation\Response;
 
 class CheifPharmacistMiddleware
@@ -22,5 +24,7 @@ if (!Auth::check()) {
     if (Auth::user()->chiefPharmacist) {
         return $next($request);
     }
-}    }
+}
+
+}
 }

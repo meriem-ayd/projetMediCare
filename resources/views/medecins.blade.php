@@ -271,7 +271,7 @@
                         </ul>
                     </div>
                 </li>
-                
+
 
 
                 <li class="nav-item">
@@ -299,7 +299,7 @@
                     <div class="collapse" id="dci">
                         <ul class="nav flex-column sub-menu">
 
-                            <li class="nav-item"> <a class="nav-link" href="">Liste DCI</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('listeDCI')}}">Liste DCI</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{route('getDCI')}}">Ajouter DCI</a></li>
                         </ul>
                     </div>
@@ -360,8 +360,10 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($medecins as $med)
-                                            <tr>
-                                                <td>{{ $med->id }}</td>
+
+                                                <tr>
+
+                                                 <td>{{ $med->id }}</td>
                                                 <td>{{ $med->user->name }}</td>
                                                 <td>{{ $med->user->email }}</td>
                                                 <td>{{ $med->speciality }}</td>
@@ -378,11 +380,89 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+
+
                                 </div>
+
+                                @foreach($medecins as $med)
+                                <div class="modal fade" id="modifierModal{{ $med->id }}" tabindex="-1" role="dialog" aria-labelledby="modifierModalLabel{{ $med->id }}" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="modifierModalLabel{{ $med->id }}">Modifier Médecin</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <form action="{{ route('updateMED', $med->id) }}" method="POST" class="custom-form">
+                                          @csrf
+                                          @method('PUT')
+                                          <div class="form-group">
+                                            <label for="id">ID </label>
+                                            <input type="text" class="form-control" name="id" value="{{ $med->id }}" required>
+                                          </div>
+
+                                          <div class="form-group">
+                                            <label for="name">Nom et prénom</label>
+                                            <input type="text" class="form-control" name="name" value="{{ $med->user->name }}" required>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="text" class="form-control" name="email" value="{{ $med->user->email }}" required>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="speciality">specialité</label>
+                                            <input type="text" class="form-control" name="speciality" value="{{ $med->speciality }}" required>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="telephone">N° telephone</label>
+                                            <input type="text" class="form-control" name="telephone" value="{{ $med->telephone }}" required>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="date_peremption">service_id</label>
+                                            <input type="text" class="form-control" name="service_id" value="{{ $med->service_id }}">
+                                          </div>
+
+
+
+
+                                          <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
+                                          </div>
+                                        </form>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                @endforeach
+
+
+
+
+
+
+
                             </div>
                         </div>
                     </div>
                 </div>
+
+                @if (session('success'))
+          <div class="alert alert-success">
+            {{ session('success') }}
+          </div>
+          @endif
+          @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          @endif
+
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->
 
@@ -394,6 +474,35 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+    <script>
+        function updateMED(id) {
+            var form = $('#update-form-' + id);
+            $.ajax({
+                url: form.attr('action'),
+                type: 'POST',
+                data: form.serialize(),
+                success: function(result) {
+                    $('#modifierModal' + id).modal('hide');
+                    showSuccessMessage('Médecin mis à jour avec succès');
+                    // Optionnel: mettre à jour le DOM avec les nouvelles valeurs
+                    // Exemple : $('#service-' + id + ' td:nth-child(2)').text(result.name);
+                },
+                error: function(err) {
+                    alert('Erreur lors de la mise à jour du médecin');
+                }
+            });
+        }
+
+        function showSuccessMessage(message) {
+            $('#success-message').text(message).fadeIn().delay(3000).fadeOut();
+        }
+        </script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script src="vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
@@ -411,6 +520,10 @@
     <script src="js/data-table.js"></script>
     <!-- End custom js for this page -->
 </body>
+   <!-- jQuery -->
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <!-- Bootstrap JS -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <!-- Mirrored from demo.bootstrapdash.com/xollo/template/demo_1/pages/tables/data-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 22:43:12 GMT -->
 

@@ -23,7 +23,7 @@ class LigneBonCommandeFournisseur extends Model
 
     public function dci()
     {
-        return $this->belongsTo(Dci::class, 'IDdci');
+        return $this->belongsTo(Dci::class, 'id_dci');
     }
 
 }

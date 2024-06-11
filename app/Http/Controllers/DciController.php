@@ -60,7 +60,7 @@ class DciController extends Controller
     public function updateDCI(Request $request, $id)
     {
         $validatedData = $request->validate([
-           
+
             'dci' => [
                 'required',
                 'string',
@@ -95,6 +95,6 @@ class DciController extends Controller
 
         $dci->update($validatedData);
 
-        return redirect()->route('liste_dci')->with('success', 'La DCI a été mise à jour avec succès.');
+        return redirect()->route('listeDCI')->with('success', 'La DCI a été mise à jour avec succès.');
     }
 }

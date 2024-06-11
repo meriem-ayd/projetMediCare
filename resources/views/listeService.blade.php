@@ -181,7 +181,7 @@
                     </div>
                     <p>Away</p>
                   </div>
-                  <div class="badge badge-success badge-pill my-auto mx-2">4</div>
+                  {{-- <div class="badge badge-success badge-pill my-auto mx-2">4</div> --}}
                   <small class="text-muted my-auto">23 min</small>
                 </li>
                 <li class="list">
@@ -299,7 +299,7 @@
             <div class="collapse" id="dci">
                 <ul class="nav flex-column sub-menu">
 
-                    <li class="nav-item"> <a class="nav-link" href="">Liste DCI</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('listeDCI')}}">Liste DCI</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{route('getDCI')}}">Ajouter DCI</a></li>
                 </ul>
             </div>
@@ -330,6 +330,9 @@
                   <h4 class="card-title"> Liste Services</h4>
                   <div class="row">
                     <div class="col-12">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Rechercher par ID" onkeyup="filterTable()">
+                    </div>
+                    <div class="col-12">
                       <table id="order-listing" class="table">
                       <thead>
                         <tr>
@@ -346,7 +349,7 @@
                       <td>
 
                         <button  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifierModal{{ $service->id }}"  title="Modifier {{ $service->id}}">Modifier</button>
-                        <button class="btn btn-danger btn-sm" data-id="{{ $service->id }}" data-name="{{ $service->id }}" onclick="showDeleteModal({{ $service->id }})">Supprimer</button>
+                        {{-- <button class="btn btn-danger btn-sm" data-id="{{ $service->id }}" data-name="{{ $service->id }}" onclick="showDeleteModal({{ $service->id }})">Supprimer</button> --}}
 
                     </td>
                       </tr>
@@ -401,7 +404,7 @@
 
 
                    <!-- Modal de confirmation de suppression -->
-      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      {{-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -419,7 +422,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
   </div>
 </div>
@@ -443,11 +446,35 @@
       </div>
       <!-- page-body-wrapper ends -->
     </div>
+    <script>
+        function filterTable() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("order-listing");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 1; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("th")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
+{{--
 <script>
 function showDeleteModal(id) {
   $('#deleteModal').modal('show');
@@ -471,9 +498,10 @@ $('#confirmDeleteBtn').click(function() {
 
   });
 });
+</script> --}}
 
 /////////////////////////////////
-
+<script>
 function updateService(id) {
   var form = $('#update-form-' + id);
   $.ajax({

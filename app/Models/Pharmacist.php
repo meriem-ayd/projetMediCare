@@ -16,4 +16,10 @@ class Pharmacist extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function bonCommandeFournisseur(){
+        return $this->hasMany(BonCommandeFournisseur::class, 'id_pharmacien');
+
+
+    }
 }
